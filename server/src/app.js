@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const db = require('./db/db');
 const Pokemon = require('./models/pokemon');
@@ -6,6 +7,9 @@ const Pokemon = require('./models/pokemon');
 const app = express();
 
 const port = process.env.PORT || 5000;
+
+
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send({
@@ -16,9 +20,7 @@ app.get('/', (req, res) => {
 app.get('/pokemon', async (req, res) => {
     const allPokemon = await Pokemon.find({});
     
-    res.send({
-        data: allPokemon
-    });
+    res.send(allPokemon);
 });
 
 app.get('/pokemon/:id', async (req, res) => {
@@ -26,9 +28,7 @@ app.get('/pokemon/:id', async (req, res) => {
         pokedex_id: parseInt(req.params.id) 
     });
 
-    res.send({
-        data: pokemon
-    });
+    res.send(pokemon);
     
 });
 

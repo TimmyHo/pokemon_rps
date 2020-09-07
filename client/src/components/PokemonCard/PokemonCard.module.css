@@ -11,11 +11,12 @@
 }
 
 .PokemonHeader {
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
 }
 
 .PokemonImage {
     height: 100px;
     width: 100px;
+    margin: 5px;
 }
