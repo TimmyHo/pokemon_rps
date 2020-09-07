@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+import PokemonCard from './components/PokemonCard/PokemonCard';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PokemonCard 
+        pokemonName="Bulbasaur" 
+        pokedexId="1" 
+        imgUrl="https://www.serebii.net/pokemon/art/001.png" 
+        type1="Grass" 
+        type2="Poison" />
     </div>
   );
 }
