@@ -1,8 +1,8 @@
 const path = require('path');
 const csv = require('csvtojson');
 
-const db = require('../db/db');
-const Pokemon = require('../models/pokemon');
+const db = require('../src/db/db');
+const Pokemon = require('../src/models/pokemon');
 
 let csvFilePath='pokemon.csv';
 //csvFilePath = 'pokemon_min.csv';
