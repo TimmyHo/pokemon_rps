@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const pokemonSchema = new mongoose.Schema({
-    pokedex_id : {
+    pokedex_id: {
         type: Number,
         required: true,
     },
