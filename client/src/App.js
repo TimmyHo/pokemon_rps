@@ -1,13 +1,19 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 import PokemonCard from './components/PokemonCard/PokemonCard';
-import PokemonList from './containers/PokemonList'
+import PokemonDetails from './components/PokemonDetails/PokemonDetails';
+import PokemonList from './containers/PokemonList';
 
 function App() {
   return (
     <div className="App">
-      <PokemonList />
+          <Switch>
+            <Route path='/pokemon/:id' component={PokemonDetails} />
+            <Route path='/' exact component={PokemonList} />
+          </Switch>
+      {/* <PokemonList /> */}
       {/* <PokemonCard 
         pokemonName="Bulbasaur" 
         pokedexId="1" 
