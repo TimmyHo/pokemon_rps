@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const db = require('./db/db');
 const Pokemon = require('./models/pokemon');
+const Trainer = require('./models/trainer');
 
 const app = express();
 
@@ -29,7 +30,20 @@ app.get('/pokemon/:id', async (req, res) => {
     });
 
     res.send(pokemon);
+});
+
+app.get('/trainers', async (req, res) => {
+    const allTrainers = await Trainer.find({});
     
+    res.send(allTrainers);
+});
+
+app.get('/trainers/:tag', async (req, res) => {
+    const trainer = await Trainer.find({
+        trainerTag: req.params.tag 
+    });
+    
+    res.send(trainer);
 });
 
 app.listen(port,  () => {

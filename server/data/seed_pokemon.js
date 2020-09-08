@@ -39,5 +39,5 @@ csv()
     seedData().then(() => {
         console.log(`Added ${pokemonList.length} pokemon`);
         process.exit();    
-    })
+    });
 });
