@@ -25,9 +25,20 @@ csv()
                 const pokemon = new Pokemon({
                     pokedex_id: pokemonData.pokedex_number,
                     name: pokemonData.name,
+                    classification: pokemonData.classfication,
+
+                    hitPoints: pokemonData.hp,
+                    attack: pokemonData.attack,
+                    defense: pokemonData.defense,
+                    specialAttack: pokemonData.sp_attack,
+                    specialDefense: pokemonData.sp_defense,
+                    speed: pokemonData.speed,
                     type1: pokemonData.type1,
                     type2: pokemonData.type2,
-                    imageUrl: `https://www.serebii.net/pokemon/art/${pokemonData.pokedex_number.padStart(3, '0')}.png`
+
+                    imageUrl: `https://www.serebii.net/pokemon/art/${pokemonData.pokedex_number.padStart(3, '0')}.png`,
+                    spriteUrl: `https://www.serebii.net/xy/pokemon/${pokemonData.pokedex_number.padStart(3, '0')}.png`,
+                    shinySpriteUrl: `https://www.serebii.net/Shiny/XY/${pokemonData.pokedex_number.padStart(3, '0')}.png`
                 });
 
                 // console.log(`Saving ${pokemonData.pokedex_number} - ${pokemonData.name}`);

@@ -19,13 +19,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pokemon', async (req, res) => {
-    const allPokemon = await Pokemon.find({});
+    const allPokemon = await Pokemon.find({}, {
+        pokedex_id: 1,
+        name: 1,
+        type1: 1,
+        type2: 1,
+        imageUrl: 1
+    });
     
     res.send(allPokemon);
 });
 
 app.get('/pokemon/:id', async (req, res) => {
-    const pokemon = await Pokemon.find({ 
+    const pokemon = await Pokemon.findOne({ 
         pokedex_id: parseInt(req.params.id) 
     });
 
@@ -39,7 +45,7 @@ app.get('/trainers', async (req, res) => {
 });
 
 app.get('/trainers/:tag', async (req, res) => {
-    const trainer = await Trainer.find({
+    const trainer = await Trainer.findOne({
         trainerTag: req.params.tag 
     });
     

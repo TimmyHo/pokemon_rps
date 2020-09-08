@@ -9,6 +9,36 @@ const pokemonSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    classification: {
+        type: String,
+        required: true
+    },
+
+    hitPoints: {
+        type: String,
+        required: true
+    },
+    attack: {
+        type: String,
+        required: true
+    },
+    defense: {
+        type: String,
+        required: true
+    },
+    specialAttack: {
+        type: String,
+        required: true
+    },
+    specialDefense: {
+        type: String,
+        required: true
+    },
+    speed: {
+        type: String,
+        required: true
+    },
+    
     type1: {
         type: String, 
         required: true
@@ -16,7 +46,17 @@ const pokemonSchema = new mongoose.Schema({
     type2: {
         type: String
     },
+
+    
     imageUrl: {
+        type: String,
+        required: true
+    },
+    spriteUrl: {
+        type: String,
+        required: true
+    },
+    shinySpriteUrl: {
         type: String,
         required: true
     }
