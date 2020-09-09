@@ -6,15 +6,15 @@ import classes from './PokemonCard.module.css';
 const pokemonCard = (props) => (
     <div className={classes.PokemonCard}>
         <div className={classes.PokemonHeader}>
-            #{props.pokedexId}:<br/>
-            {props.pokemonName}
+            #{props.pokedex_id}:<br/>
+            {props.name}
         </div>
 
         <div>
-            <img className={classes.PokemonImage} src={props.imgUrl} alt={props.pokemonName}/>
+            <img className={classes.PokemonImage} src={props.imageUrl} alt={props.name}/>
         </div>
 
-        <Link to={"pokemon/"+props.pokedexId} className={classes.Button}>
+        <Link to={"pokemon/"+props.pokedex_id} className={classes.Button}>
             INFO
         </Link>
     </div>

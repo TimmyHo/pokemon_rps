@@ -1,0 +1,42 @@
+.TrainerCard {
+    border: 3px solid black; 
+    margin: 5px;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+}
+.TagContainer {
+    margin: 5px;
+    width: 350px;
+}
+
+.ActionsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    /* margin-left: auto; */
+}
+
+.Button {
+    display: inline-block;
+    margin: 2px auto;
+    padding: 6px;
+
+    width: 100px;
+
+    border: 2px solid black;
+    background: black;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+.Button:hover {
+    background: white;
+    color: black;
+
+    text-decoration: none; 
+    cursor: pointer; 
+}

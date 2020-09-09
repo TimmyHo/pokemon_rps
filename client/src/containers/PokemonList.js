@@ -28,11 +28,7 @@ class App extends Component {
             pokemonList = this.state.pokemon.map((pokemonData) => {
                 return <PokemonCard
                     key={pokemonData.pokedex_id}
-                    pokedexId={pokemonData.pokedex_id}
-                    pokemonName={pokemonData.name} 
-                    type1={pokemonData.type1} 
-                    type2={pokemonData.type2} 
-                    imgUrl={pokemonData.imageUrl} 
+                    {...pokemonData}
                 />
             })
             .reduce((arr, el) => {
@@ -40,16 +36,15 @@ class App extends Component {
             }, []);
         }
     
-
-    return (
-      <div className={classes.PokemonBackground}>
-            <div className={classes.PokemonTitle}>Pokemons</div>
-            <div className={classes.PokemonList}>
-                { pokemonList }
+        return (
+            <div className={classes.PokemonBackground}>
+                <div className={classes.PokemonTitle}>Pokemons</div>
+                <div className={classes.PokemonList}>
+                    { pokemonList }
+                </div>
             </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default App;

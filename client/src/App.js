@@ -6,10 +6,13 @@ import PokemonCard from './components/PokemonCard/PokemonCard';
 import PokemonDetails from './components/PokemonDetails/PokemonDetails';
 import PokemonList from './containers/PokemonList';
 
+import TrainerList from './containers/TrainerList';
+
 function App() {
   return (
     <div className="App">
           <Switch>
+            <Route path='/trainers' component={TrainerList} />
             <Route path='/pokemon/:id' component={PokemonDetails} />
             <Route path='/' exact component={PokemonList} />
           </Switch>
