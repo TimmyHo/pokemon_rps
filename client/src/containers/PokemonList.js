@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from '../axios';
 
-import PokemonCard from '../components/PokemonCard/PokemonCard'
+import PokemonCard from '../components/PokemonCard/PokemonCard';
+
+import classes from './PokemonList.module.css';
 
 class App extends Component {
     state = {
@@ -40,9 +42,11 @@ class App extends Component {
     
 
     return (
-      <div>
-          <h1>Pokemons</h1>
-        { pokemonList }
+      <div className={classes.PokemonBackground}>
+            <div className={classes.PokemonTitle}>Pokemons</div>
+            <div className={classes.PokemonList}>
+                { pokemonList }
+            </div>
       </div>
     );
   }

@@ -1,19 +1,22 @@
 .PokemonCard {
-    border: 3px solid black;
-    border-radius: 15%;
-    background: lightgrey;
-    height: 200px;
-    width: 200px;
-    display: inline-block;
-    box-sizing: border-box;
-
+    height: 210px;
+    width: 210px;
     margin: 20px;
-    padding: 20px;
+    padding: 5px;
+    
+    border: 5px solid black;
+    border-radius: 15%;
+    box-sizing: border-box;
+    background: lightgrey;
+    
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .PokemonHeader {
     font-size: 1.1em;
-    font-weight: bold;
+    line-height: 1.2;
 }
 
 .PokemonImage {
@@ -22,25 +25,22 @@
     margin: 5px;
 }
 
-.Links {
-    
-}
-
 .Button {
-    background: black;
-    width: 100px;
-    margin: auto auto;
-}
+    display: inline;
+    margin: 0px auto;
+    padding: 8px;
 
-a {
+    border: 2px solid black;
+    background: black;
     color: white;
-    font-size: 1.1em;
-    font-weight: bold;
+
     text-decoration: none;
 }
 
-a:hover 
-{
-     text-decoration: none; 
-     cursor: pointer; 
+.Button:hover {
+    background: white;
+    color: black;
+
+    text-decoration: none; 
+    cursor: pointer; 
 }

@@ -1,0 +1,21 @@
+.PokemonBackground {
+    background: #dc2130;
+    background-image: url('https://i.imgur.com/g0Ya7xV.jpg');
+
+    background-size: 400px auto;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.PokemonTitle {
+    display: block;
+    padding: 20px 0px 0px 0px;
+    font-size: 2.5em;
+}
+
+.PokemonList {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
