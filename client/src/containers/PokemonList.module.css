@@ -5,12 +5,14 @@
     background-size: 400px auto;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    
 }
 
 .PokemonTitle {
     display: block;
     padding: 20px 0px 0px 0px;
     font-size: 2.5em;
+    text-align: center;
 }
 
 .PokemonList {
