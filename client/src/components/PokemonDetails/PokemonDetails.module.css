@@ -61,6 +61,7 @@
     height: 90px;
     width: 90px;
     background: #e0e5eb;
+    border: 1px solid black;
     border-radius: 25%;
     margin: 10px 5px 0px 5px;
     padding: 2px;
