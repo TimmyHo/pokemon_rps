@@ -14,8 +14,6 @@ class PokemonDetails extends Component {
         axios.get('/pokemon/'+this.props.match.params.id)
         .then(response => {
             this.setState({pokemon: response.data});
-
-            console.log(response.data);
         })
         .catch(error => {
             this.setState({error: true});

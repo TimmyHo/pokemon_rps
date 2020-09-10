@@ -16,14 +16,14 @@ const trainerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    picUrl: {
+    trainerImageUrl: {
         type: String, 
         required: true
     },
     tagline: {
         type: String
     },
-    bio: {
+    info: {
         type: String
     }
 }, {

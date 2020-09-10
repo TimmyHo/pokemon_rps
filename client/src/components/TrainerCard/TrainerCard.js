@@ -6,14 +6,14 @@ import classes from './TrainerCard.module.css';
 const trainerCard = (props) => (
     <div className={classes.TrainerCard}>
         <div>
-            <img src={props.picUrl} alt={props.trainerTag}/>
+            <img src={props.trainerImageUrl} alt={props.trainerTag}/>
         </div>
         <div className={classes.TagContainer}>
             {props.trainerTag}
         </div>
 
         <div className={classes.ActionsContainer}>
-            <Link to="/" className={classes.Button}>
+            <Link to={"/trainers/"+props.trainerTag} className={classes.Button}>
                 VIEW
             </Link>
             <Link to="/" className={classes.Button}>

@@ -24,9 +24,9 @@ async function seedTrainers() {
             trainerType: 'TEST',
 
             name: 'Trainer #'+(i+1),
-            picUrl: picList[i % picList.length],
+            trainerImageUrl: picList[i % picList.length],
             tagline: loremIpsum({ count: 5, units: 'words'}),
-            bio: loremIpsum({count: 3, units: 'sentences'})
+            info: loremIpsum({count: 3, units: 'sentences'})
         });
 
         await trainer.save();
