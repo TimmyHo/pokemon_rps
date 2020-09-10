@@ -12,10 +12,23 @@ class App extends Component {
         error: false
     }
 
+    deleteTrainerHandler = (trainerTag) => {
+        axios.delete('/trainers/'+trainerTag)
+        .then(response => {
+            let newTrainers = this.state.trainers;
+            newTrainers = newTrainers.filter(newTrainer => newTrainer.trainerTag !== trainerTag);
+    
+            this.setState({trainers: newTrainers});
+        })
+        .catch(error => {
+            this.setState({error: true});
+        });
+    }
+
     componentDidMount() {
         axios.get('/trainers')
         .then(response => {
-            this.setState({trainers: response.data})
+            this.setState({trainers: response.data});
         })
         .catch(error => {
             this.setState({error: true});
@@ -29,6 +42,7 @@ class App extends Component {
             trainerList = this.state.trainers.map((trainerData) => {
                 return <TrainerCard 
                     key={trainerData.trainerTag}
+                    delete={this.deleteTrainerHandler}
                     {...trainerData} 
                 />
             })

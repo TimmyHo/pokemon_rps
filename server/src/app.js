@@ -52,6 +52,14 @@ app.get('/trainers/:tag', async (req, res) => {
     res.send(trainer);
 });
 
+app.delete('/trainers/:tag', async (req, res) => {
+    await Trainer.deleteOne({
+        trainerTag: req.params.tag 
+    });
+    
+    res.send({message: 'Deleted '+req.params.tag});
+});
+
 app.listen(port,  () => {
     console.log('Server is up on port '+port);
 });

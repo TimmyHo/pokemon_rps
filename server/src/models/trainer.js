@@ -20,12 +20,6 @@ const trainerSchema = new mongoose.Schema({
         type: String, 
         required: true
     },
-    gender: {
-        type: String,
-        enum: ['NONE', 'M', 'F'],
-        default: 'NONE',
-        required: true
-    },
     tagline: {
         type: String
     },

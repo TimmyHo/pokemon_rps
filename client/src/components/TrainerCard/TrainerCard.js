@@ -12,7 +12,6 @@ const trainerCard = (props) => (
             {props.trainerTag}
         </div>
 
-
         <div className={classes.ActionsContainer}>
             <Link to="/" className={classes.Button}>
                 VIEW
@@ -20,9 +19,9 @@ const trainerCard = (props) => (
             <Link to="/" className={classes.Button}>
                 EDIT
             </Link>
-            <Link to="/" className={classes.Button}>
+            <div className={classes.Button} onClick={() => props.delete(props.trainerTag)}>
                 DELETE
-            </Link>
+            </div>
         </div>
     </div>
 );

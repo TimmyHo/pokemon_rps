@@ -9,7 +9,6 @@ async function deleteTrainers() {
 };
 
 async function seedTrainers() {
-    const genderList = ['NONE', 'M', 'F'];
     const picList = [
         'https://archives.bulbagarden.net/media/upload/0/0e/Spr_FRLG_Pok%C3%A9Maniac.png',
         'https://archives.bulbagarden.net/media/upload/4/4c/Spr_FRLG_Oak.png',
@@ -26,7 +25,6 @@ async function seedTrainers() {
 
             name: 'Trainer #'+(i+1),
             picUrl: picList[i % picList.length],
-            gender: genderList[i % genderList.length],
             tagline: loremIpsum({ count: 5, units: 'words'}),
             bio: loremIpsum({count: 3, units: 'sentences'})
         });
