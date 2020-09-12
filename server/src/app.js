@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
+
 const db = require('./db/db');
 const Pokemon = require('./models/pokemon');
 const Trainer = require('./models/trainer');
@@ -11,6 +12,8 @@ const port = process.env.PORT || 5000;
 
 
 app.use(cors());
+app.use(express.json()); // support json encoded bodies
+app.use(express.urlencoded({ extended: true })); // support encoded bodies
 
 app.get('/', (req, res) => {
     res.send({
@@ -42,6 +45,28 @@ app.get('/trainers', async (req, res) => {
     const allTrainers = await Trainer.find({});
     
     res.send(allTrainers);
+});
+
+app.post('/trainers', async (req, res) => {
+    const trainer = new Trainer({
+        trainerImageUrl: req.body.imageUrl,
+        trainerTag: req.body.tag,
+        name: req.body.name,
+        tagline: req.body.tagline,
+        info: req.body.info,
+    });
+
+    try {
+        await trainer.save();
+    } catch(e) {
+        if (e.code === 11000) {
+            return res.status(422).send({
+                message: 'trainer tag is already taken'
+            });
+        }
+    }
+
+    res.send(trainer);
 });
 
 app.get('/trainers/:tag', async (req, res) => {

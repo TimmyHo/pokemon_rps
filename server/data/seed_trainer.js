@@ -9,6 +9,7 @@ async function deleteTrainers() {
 };
 
 async function seedTrainers() {
+    // Sprites taken from: https://archives.bulbagarden.net/wiki/Category:Trainer_sprites
     const picList = [
         'https://archives.bulbagarden.net/media/upload/0/0e/Spr_FRLG_Pok%C3%A9Maniac.png',
         'https://archives.bulbagarden.net/media/upload/4/4c/Spr_FRLG_Oak.png',

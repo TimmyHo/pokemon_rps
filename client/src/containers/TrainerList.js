@@ -55,7 +55,7 @@ class App extends Component {
     return (
       <div>
             <div className={classes.TrainerTitle}>Trainers</div>
-            <Link to="/" className={classes.CreateButton}>
+            <Link to="/trainers/create" className={classes.CreateButton}>
                 CREATE
             </Link>
             <div>
