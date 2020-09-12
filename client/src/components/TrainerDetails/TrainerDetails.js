@@ -48,7 +48,7 @@ class TrainerDetails extends Component {
             <div className={classes.TrainerPage}>
                 {trainer}
                 <div className={classes.LinksContainer}>
-                <Link className={classes.Button} >
+                <Link to={`/trainers/${this.props.match.params.tag}/edit`} className={classes.Button} >
                     EDIT
                 </Link>
                 <Link to="/trainers" className={classes.Button}>

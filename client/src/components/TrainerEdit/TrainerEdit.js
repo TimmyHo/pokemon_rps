@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from '../../axios';
 
-import classes from './TrainerCreate.module.css';
+import classes from './TrainerEdit.module.css';
 
 class TrainerCreate extends Component {
-    
     maleTrainerSprite = 'https://archives.bulbagarden.net/media/upload/c/ca/Spr_FRLG_Red.png';
     femaleTrainerSprite = 'https://archives.bulbagarden.net/media/upload/2/2b/Spr_FRLG_Leaf.png';
 
@@ -19,8 +18,8 @@ class TrainerCreate extends Component {
         error: false
     }
 
-    createTrainerHandler = () => {
-         axios.post('/trainers', {
+    editTrainerHandler = () => {
+         axios.put(`/trainers/${this.state.tag}`, {
              imageUrl: this.state.imageUrl,
              tag: this.state.tag,
              tagline: this.state.tagline,
@@ -57,19 +56,25 @@ class TrainerCreate extends Component {
       }
 
     componentDidMount() {
-        // axios.get(`/trainers/${this.props.match.params.tag}`)
-        // .then(response => {
-        //     this.setState({trainer: response.data});
-        // })
-        // .catch(error => {
-        //     this.setState({error: true});
-        // });
+        axios.get(`/trainers/${this.props.match.params.tag}`)
+        .then(response => {
+            this.setState({
+                imageUrl: response.data.trainerImageUrl,
+                tag: response.data.trainerTag,
+                tagline: response.data.tagline,
+                name: response.data.name,
+                info: response.data.info
+            });
+        })
+        .catch(error => {
+            this.setState({error: true});
+        });
     }
 
     render() {
         return (
             <div className={classes.TrainerPage}>
-                <div className={classes.CreateHeader}>Create Trainer</div>
+                <div className={classes.EditHeader}>Edit Trainer</div>
 
                 <div className={classes.SpriteContainer}>
                     <label className={classes.SpriteOption}>
@@ -92,7 +97,7 @@ class TrainerCreate extends Component {
                     </label>
                 </div>
                  
-                <div className={classes.TrainerInputContainer}>
+                 <div className={classes.TrainerInputContainer}>
                      
                 <label>
                     Trainer Tag 
@@ -103,8 +108,9 @@ class TrainerCreate extends Component {
                         </span>
                     </span>
                 </label>
-                <input className={classes.NativeInput} type="text" name="tag" onChange={this.handleChange} value={this.state.tag}/>
+                <input className={classes.NativeInput} disabled type="text" name="tag" onChange={this.handleChange} value={this.state.tag}/>
            
+                
                 <label>
                     Name
                     <span className={`${classes.Tooltip} ${classes.InfoIcon}`}>?
@@ -128,19 +134,22 @@ class TrainerCreate extends Component {
                 </label>
                 <textarea className={`${classes.NativeInput} ${classes.InputArea}`} name="info" onChange={this.handleChange}  value={this.state.info}/>
                 </div>
+                     
 
                 <div className={classes.LinksContainer}>
-                    <button onClick={this.createTrainerHandler} className={`${classes.NativeButton} ${classes.Button}`}>
-                        CREATE
+                    <button onClick={this.editTrainerHandler} className={`${classes.NativeButton} ${classes.Button}`}>
+                        SAVE
                     </button>
                         
                     <Link to="/trainers" className={classes.Button}>
-                    Back
+                        Back
                     </Link>
                 </div>
             </div>
         );
     }
+            
+    
 };
 
 export default TrainerCreate;

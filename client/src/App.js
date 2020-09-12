@@ -7,7 +7,7 @@ import PokemonDetails from './components/PokemonDetails/PokemonDetails';
 import PokemonList from './containers/PokemonList';
 
 import TrainerDetails from './components/TrainerDetails/TrainerDetails';
-
+import TrainerEdit from './components/TrainerEdit/TrainerEdit';
 import TrainerCreate from './components/TrainerCreate/TrainerCreate';
 import TrainerList from './containers/TrainerList';
 
@@ -15,8 +15,8 @@ function App() {
   return (
     <div className="App">
         <Switch>
-            
             <Route path='/trainers/create' exact component={TrainerCreate} />
+            <Route path='/trainers/:tag/edit' component={TrainerEdit} />
             <Route path='/trainers/:tag' component={TrainerDetails} />
             <Route path='/trainers' component={TrainerList} />
 

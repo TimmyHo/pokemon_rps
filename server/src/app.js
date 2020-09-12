@@ -77,6 +77,22 @@ app.get('/trainers/:tag', async (req, res) => {
     res.send(trainer);
 });
 
+app.put('/trainers/:tag', async (req, res) => {
+    const trainer = await Trainer.findOneAndUpdate({
+        trainerTag: req.params.tag 
+    }, {
+        $set: {
+            trainerImageUrl: req.body.imageUrl,
+            trainerTag: req.body.tag,
+            name: req.body.name,
+            tagline: req.body.tagline,
+            info: req.body.info,
+        }
+    });
+    
+    res.send(trainer);
+});
+
 app.delete('/trainers/:tag', async (req, res) => {
     await Trainer.deleteOne({
         trainerTag: req.params.tag 
@@ -84,6 +100,7 @@ app.delete('/trainers/:tag', async (req, res) => {
     
     res.send({message: 'Deleted '+req.params.tag});
 });
+
 
 app.listen(port,  () => {
     console.log('Server is up on port '+port);

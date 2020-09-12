@@ -10,7 +10,7 @@
     text-align: right;
 }
 
-.CreateHeader {
+.EditHeader {
     text-align: center;
     font-size: 2.5em;
 }
@@ -60,6 +60,11 @@
     padding: 5px;
     appearance: none;
     border: 2px solid black;
+}
+
+.NativeInput:disabled {
+    background: silver;
+    color: black;
 }
 
 .InputArea {

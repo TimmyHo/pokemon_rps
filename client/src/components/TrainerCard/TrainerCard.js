@@ -13,10 +13,10 @@ const trainerCard = (props) => (
         </div>
 
         <div className={classes.ActionsContainer}>
-            <Link to={"/trainers/"+props.trainerTag} className={classes.Button}>
+            <Link to={`/trainers/${props.trainerTag}`} className={classes.Button}>
                 VIEW
             </Link>
-            <Link to="/" className={classes.Button}>
+            <Link to={`/trainers/${props.trainerTag}/edit`} className={classes.Button}>
                 EDIT
             </Link>
             <div className={classes.Button} onClick={() => props.delete(props.trainerTag)}>
