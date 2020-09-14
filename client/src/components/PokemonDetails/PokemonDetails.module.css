@@ -1,7 +1,7 @@
 .PokemonPage {
     display: flex;
     flex-direction: column;
-    background: darkgray;
+    background: whitesmoke;
     height: 100vh;
 }
 

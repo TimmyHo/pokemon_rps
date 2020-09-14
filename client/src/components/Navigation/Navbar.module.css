@@ -10,6 +10,7 @@
     width: 100%;
 
     font-size: 1.5em;
+    z-index: 2;
 }
 
 .NavigationItem a {

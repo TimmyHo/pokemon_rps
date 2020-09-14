@@ -31,9 +31,9 @@ class TrainerDetails extends Component {
                        <div className={classes.TrainerTagline}>{this.state.trainer.tagline}</div>
                    {/* </div> */}
                    <div className={classes.TrainerContent}>
-                       <div className={classes.PokemonImageBox}>
+                       {/* <div className={classes.PokemonImageBox}>
                        <img className={classes.PokemonImage} src="https://www.serebii.net/xy/pokemon/099.png" alt="trainer's pokemon"/>
-                       </div>
+                       </div> */}
                        <img className={classes.TrainerImage} src={this.state.trainer.trainerImageUrl} alt="trainer"/>
                        <div className={classes.InfoContainer}>
                            <div>Name: {this.state.trainer.name}</div>

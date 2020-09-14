@@ -7,13 +7,9 @@ html.wf-loading * {
   font-family: 'Press Start 2P', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Content {
+  position: absolute;
+  margin-top: 54px;
+  /* height: 100%; */
+  width: 100%;
 }
