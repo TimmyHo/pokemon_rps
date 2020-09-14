@@ -1,0 +1,30 @@
+.Navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+    overflow: hidden;
+    background-color: darkgray;
+    position: fixed; 
+    top: 0; 
+    width: 100%;
+
+    font-size: 1.5em;
+}
+
+.NavigationItem a {
+    padding: 15px 10px;
+    color: black;
+    text-decoration: none;
+    box-sizing: border-box;
+    display: block;
+}
+
+.NavigationItem a:hover {
+    color: crimson;
+}
+
+.NavigationItem .active {
+    background: lightgray;
+    color: crimson;
+}

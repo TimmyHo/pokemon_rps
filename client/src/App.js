@@ -10,10 +10,12 @@ import TrainerDetails from './components/TrainerDetails/TrainerDetails';
 import TrainerEdit from './components/TrainerEdit/TrainerEdit';
 import TrainerCreate from './components/TrainerCreate/TrainerCreate';
 import TrainerList from './containers/TrainerList';
+import Navbar from './components/Navigation/Navbar';
 
 function App() {
   return (
     <div className="App">
+        <Navbar /> 
         <Switch>
             <Route path='/trainers/create' exact component={TrainerCreate} />
             <Route path='/trainers/:tag/edit' component={TrainerEdit} />
