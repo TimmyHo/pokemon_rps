@@ -8,7 +8,7 @@ This project was to create a more complex full stack application using one of my
 # Plan
 |Phase|Date| Name | Description|
 |:---|:---|:---|:---|
-| 1 |2020/09/15|Fundamentals|Create UI and CRUD APIs for Pokemon + Trainers | 
+| **1** |**2020/09/15**|**Fundamentals**|**Create UI and CRUD APIs for Pokemon + Trainers** | 
 | 2 |TBD|Battle| Select a Pokemon Companion and create the pokemon RPS battle system|
 | 3 |TBD|Gyms| Add in various gym leaders and the elite 4| 
 | 4 |TBD|Account| Add in login/authentication for trainers|
@@ -24,7 +24,7 @@ This project was to create a more complex full stack application using one of my
 * MongoDB
 
 ## Usage
-Ensure you already have a local mongoDB server (see https://docs.mongodb.com/manual/installation/ for details)
+Ensure you have installed node, npm and a local mongoDB server (see https://docs.mongodb.com/manual/installation/ for details)
 
 
 ### Initial setup 
@@ -62,4 +62,4 @@ cd server
 npm run start
 ```
 
-Navigate to localhost:3000
+In a web browser, navigate to http://localhost:3000
