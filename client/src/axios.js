@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Keep this using localhost, but use am env variable in the future
+const serverUrl = process.env.SERVER_URL || 'http://localhost:5000';
 const instance = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: serverUrl
 });
 
 export default instance;
