@@ -1,0 +1,16 @@
+FROM node:slim
+
+ENV TZ="Asia/Taipei"
+
+RUN apt-get update && apt-get install -y \
+    vim 
+
+WORKDIR /pokemon-rps-client
+COPY ./package.json ./
+
+RUN npm install
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
