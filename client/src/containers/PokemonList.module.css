@@ -1,6 +1,6 @@
 .PokemonBackground {
     background: #dc2130;
-    background-image: url('https://i.imgur.com/g0Ya7xV.jpg');
+    background-image: url("/img/pokedex.jpg");
     background-position-y: 54px;
 
     background-size: 400px auto;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from '../../axios';
 
 import classes from './TrainerEdit.module.css';
@@ -51,6 +51,8 @@ class TrainerCreate extends Component {
                 break;
             case 'info':
                 this.setState({info: event.target.value});
+                break;
+            default:
                 break;
         }
       }

@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 
-
 const db = require('./db/db');
 const Pokemon = require('./models/pokemon');
 const Trainer = require('./models/trainer');
