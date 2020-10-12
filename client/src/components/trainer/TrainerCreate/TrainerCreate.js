@@ -6,8 +6,8 @@ import classes from './TrainerCreate.module.css';
 
 class TrainerCreate extends Component {
     
-    maleTrainerSprite = 'https://archives.bulbagarden.net/media/upload/c/ca/Spr_FRLG_Red.png';
-    femaleTrainerSprite = 'https://archives.bulbagarden.net/media/upload/2/2b/Spr_FRLG_Leaf.png';
+    maleTrainerSprite = '/img/sprites/male_trainer.png';
+    femaleTrainerSprite = '/img/sprites/female_trainer.png';
 
     state = {
         imageUrl: this.maleTrainerSprite,

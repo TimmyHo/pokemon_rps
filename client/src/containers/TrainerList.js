@@ -6,7 +6,7 @@ import TrainerCard from '../components/trainer/TrainerCard/TrainerCard';
 
 import classes from './TrainerList.module.css';
 
-class App extends Component {
+class TrainerList extends Component {
     state = {
         trainers: null,
         error: false
@@ -66,4 +66,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default TrainerList;

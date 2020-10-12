@@ -5,7 +5,7 @@ import PokemonCard from '../components/pokemon/PokemonCard/PokemonCard';
 
 import classes from './PokemonList.module.css';
 
-class App extends Component {
+class PokemonList extends Component {
     state = {
         pokemon: null,
         error: false
@@ -47,4 +47,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default PokemonList;
