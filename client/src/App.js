@@ -2,12 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
-import PokemonDetails from './components/pokemon/PokemonDetails/PokemonDetails';
+import PokemonDetails from './components/Pokemon/PokemonDetails/PokemonDetails';
 import PokemonList from './containers/PokemonList';
 
-import TrainerDetails from './components/trainer/TrainerDetails/TrainerDetails';
-import TrainerEdit from './components/trainer/TrainerEdit/TrainerEdit';
-import TrainerCreate from './components/trainer/TrainerCreate/TrainerCreate';
+import TrainerDetails from './components/Trainer/TrainerDetails/TrainerDetails';
+import TrainerEdit from './components/Trainer/TrainerEdit/TrainerEdit';
+import TrainerCreate from './components/Trainer/TrainerCreate/TrainerCreate';
 import TrainerList from './containers/TrainerList';
 import Navbar from './components/Navigation/Navbar';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../axios';
 
-import PokemonCard from '../components/pokemon/PokemonCard/PokemonCard';
+import PokemonCard from '../components/Pokemon/PokemonCard/PokemonCard';
 
 import classes from './PokemonList.module.css';
 

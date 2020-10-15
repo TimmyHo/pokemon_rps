@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../axios';
 
-import TrainerCard from '../components/trainer/TrainerCard/TrainerCard';
+import TrainerCard from '../components/Trainer/TrainerCard/TrainerCard';
 
 import classes from './TrainerList.module.css';
 
