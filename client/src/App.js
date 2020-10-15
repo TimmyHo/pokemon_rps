@@ -9,13 +9,13 @@ import TrainerDetails from './components/Trainer/TrainerDetails/TrainerDetails';
 import TrainerEdit from './components/Trainer/TrainerEdit/TrainerEdit';
 import TrainerCreate from './components/Trainer/TrainerCreate/TrainerCreate';
 import TrainerList from './containers/TrainerList';
-import Navbar from './components/Navigation/Navbar';
+import MainNavbar from './components/Navigation/MainNavbar';
 
 function App() {
   return (
     <div className="App">
-        <Navbar /> 
-        <div className="Content">
+        <MainNavbar /> 
+        {/* <div className="container-fluid">
           <Switch>
               <Route path='/trainers/create' exact component={TrainerCreate} />
               <Route path='/trainers/:tag/edit' component={TrainerEdit} />
@@ -25,7 +25,7 @@ function App() {
               <Route path='/pokemon/:id' component={PokemonDetails} />
               <Route path='/' exact component={PokemonList} />
           </Switch>
-        </div>
+        </div> */}
       {/* <PokemonList /> */}
       {/* <PokemonCard 
         pokemonName="Bulbasaur" 

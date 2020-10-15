@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+// Override default variables before the import
+$font-family-base: 'Press Start 2P', cursive;
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
