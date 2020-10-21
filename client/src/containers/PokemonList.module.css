@@ -1,12 +1,12 @@
 .PokemonBackground {
-    background: #dc2130;
-    background-image: url("/img/pokedex.jpg");
-    background-position-y: 54px;
+  background: #dc2130;
+  background-image: url('/img/pokedex.jpg');
+  background-position-y: 54px;
 
-    background-size: 400px auto;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    
+  background-size: 400px auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  /* height: 100%; */
 }
 
 /* .PokemonTitle {

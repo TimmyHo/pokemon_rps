@@ -28,6 +28,7 @@ class PokemonList extends Component {
             pokemonList = this.state.pokemon.map((pokemonData) => {
                 return <PokemonCard
                     key={pokemonData.pokedex_id}
+       
                     {...pokemonData}
                 />
             })
@@ -38,10 +39,9 @@ class PokemonList extends Component {
     
         return (
             <div className={classes.PokemonBackground}>
-                <div className={classes.PokemonTitle}>Pokemons</div>
-                <div className={classes.PokemonList}>
+                <div className="d-inline-flex flex-wrap justify-content-around mx-auto">
                     { pokemonList }
-                </div>
+                </div> 
             </div>
         );
     }
