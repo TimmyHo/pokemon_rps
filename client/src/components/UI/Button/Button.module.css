@@ -1,0 +1,20 @@
+.Button {
+  display: inline;
+  margin: 0px auto;
+  padding: 8px;
+
+  border: 2px solid black;
+  background: black;
+  color: white;
+
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.Button:hover {
+  background: white;
+  color: black;
+
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
-
 import Container from 'react-bootstrap/Container';
 
 import PokemonDetails from './components/Pokemon/PokemonDetails/PokemonDetails';
@@ -19,9 +18,6 @@ function App() {
     <div className="App">
         <MainNavbar /> 
         <Container fluid className="p-0">
-          <PokemonList /> 
-        </Container>
-        {/* <div className="container-fluid">
           <Switch>
               <Route path='/trainers/create' exact component={TrainerCreate} />
               <Route path='/trainers/:tag/edit' component={TrainerEdit} />
@@ -33,6 +29,9 @@ function App() {
               <Route path='/pokemon' component={PokemonList} />
               <Route path='/' exact component={PokemonList} />
           </Switch>
+        </Container>
+        {/* <div className="container-fluid">
+
         </div> */}
       {/* <PokemonList /> */}
       {/* <PokemonCard 

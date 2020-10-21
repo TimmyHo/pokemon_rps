@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../../UI/Button/Button';
 
 import classes from './PokemonCard.module.css';
 
@@ -14,9 +15,7 @@ const pokemonCard = (props) => (
             <img className={classes.PokemonImage} src={props.imageUrl} alt={props.name}/>
         </div>
 
-        <Link to={"pokemon/"+props.pokedex_id} className={classes.Button}>
-            INFO
-        </Link>
+        <Button to={"pokemon/"+props.pokedex_id} text="Info"/>
     </div>
 );
 
