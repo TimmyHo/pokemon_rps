@@ -3,5 +3,7 @@
 // Override default variables before the import
 $font-family-base: 'Press Start 2P', cursive;
 
+// $body-bg: #f0f;
+
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
