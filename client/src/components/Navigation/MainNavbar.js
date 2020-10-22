@@ -8,7 +8,7 @@ import classes from './MainNavbar.module.css';
 
 const navbar = () => {
     return (
-        <Navbar bg="secondary" variant="dark" sticky="top">
+        <Navbar bg="secondary" variant="dark" fixed="top">
         <Navbar.Brand className="my-auto" href="/">Pokemon RPS</Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link href="/pokemon">Pokedex</Nav.Link>

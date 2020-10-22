@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
         <MainNavbar /> 
-        <Container fluid className="p-0">
+        <Container fluid className="p-0 Content">
           <Switch>
               <Route path='/trainers/create' exact component={TrainerCreate} />
               <Route path='/trainers/:tag/edit' component={TrainerEdit} />

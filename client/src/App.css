@@ -6,9 +6,8 @@ html.wf-loading * {
   min-height: 100vh;
   font-family: 'Press Start 2P', cursive;
 }
-
+*/
 .Content {
   position: absolute;
   margin-top: 54px;
-  width: 100%;
-} */
+}
