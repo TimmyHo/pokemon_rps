@@ -47,7 +47,6 @@ const pokemonSchema = new mongoose.Schema({
         type: String
     },
 
-    
     imageUrl: {
         type: String,
         required: true

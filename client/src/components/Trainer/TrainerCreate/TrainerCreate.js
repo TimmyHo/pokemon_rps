@@ -22,20 +22,37 @@ class TrainerCreate extends Component {
     }
 
     createTrainerHandler = () => {
-        //   axios.post('/trainers', {
-        //       imageUrl: this.state.imageUrl,
-        //       tag: this.state.tag,
-        //       tagline: this.state.tagline,
-        //       name: this.state.name,
-        //       info: this.state.info
-        //   })
-        //  .then(response => {
-        //      this.props.history.push(`/trainers/${response.data.trainerTag}`);
-        //  })
-        //  .catch(error => {
-        //      alert(error.response.data.message);
-        //      this.setState({error: true});
-        //  });
+        if (this.state.email === '') {
+            alert('Please input your email');
+            return;
+        }
+        else if (this.state.password1 === '' || this.state.password2) {
+            alert('Please input a password');
+            return;
+        }
+        else if (this.state.tag === '') {
+            alert('Please choose your trainer tag');
+            return;
+        }
+        if (this.state.password1 !== this.state.password2) {
+            alert('Your passwords do not match!');
+            return;
+        }
+
+        axios.post('/trainers', {
+            email: this.state.email,
+            password: this.state.password,
+            imageUrl: this.state.imageUrl,
+            tag: this.state.tag
+        })
+        .then(response => {
+            this.props.history.push(`/trainers/${response.data.trainerTag}`);
+        })
+        .catch(error => {
+            alert(error.response.data.message);
+            this.setState({error: true});
+        });
+    
     }
 
     handleChange = (event) => {

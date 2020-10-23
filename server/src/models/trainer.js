@@ -1,9 +1,22 @@
 const mongoose = require('mongoose');
 
 const trainerSchema = new mongoose.Schema({
+    email: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     trainerTag: {
         type: String,
         unique: true,
+        required: true
+    },
+    trainerImageUrl: {
+        type: String, 
         required: true
     },
     trainerType: {
@@ -11,20 +24,6 @@ const trainerSchema = new mongoose.Schema({
         enum: ['ADMIN', 'TEST', 'BOT', 'USER'],
         default: 'USER',
         required: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    trainerImageUrl: {
-        type: String, 
-        required: true
-    },
-    tagline: {
-        type: String
-    },
-    info: {
-        type: String
     }
 }, {
     timestamps: false

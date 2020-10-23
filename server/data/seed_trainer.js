@@ -21,13 +21,11 @@ async function seedTrainers() {
     // Generate trainer data
     for (let i = 0; i < 20; i++) {
         const trainer = new Trainer({
-            trainerTag: 'testTrainer_'+(i+1),
-            trainerType: 'TEST',
-
-            name: 'Trainer #'+(i+1),
+            email: `test_trainer_${i+1}@pokemon.com`,
+            password: 'testtest',
+            trainerTag: `testTrainer_${i+1}`,
             trainerImageUrl: picList[i % picList.length],
-            tagline: loremIpsum({ count: 5, units: 'words'}),
-            info: loremIpsum({count: 3, units: 'sentences'})
+            trainerType: 'TEST'
         });
 
         await trainer.save();

@@ -48,11 +48,10 @@ app.get('/trainers', async (req, res) => {
 
 app.post('/trainers', async (req, res) => {
     const trainer = new Trainer({
+        email: req.body.email,
+        password: req.body.password,
         trainerImageUrl: req.body.imageUrl,
-        trainerTag: req.body.tag,
-        name: req.body.name,
-        tagline: req.body.tagline,
-        info: req.body.info,
+        trainerTag: req.body.tag
     });
 
     try {
@@ -60,7 +59,7 @@ app.post('/trainers', async (req, res) => {
     } catch(e) {
         if (e.code === 11000) {
             return res.status(422).send({
-                message: 'trainer tag is already taken'
+                message: 'email/trainer tag is already taken'
             });
         }
     }
