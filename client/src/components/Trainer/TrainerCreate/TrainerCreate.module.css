@@ -21,16 +21,4 @@
 
 .TrainerSprite {
   height: 100px;
-  padding: 5px;
-  margin: 5px;
-}
-
-.NativeInput {
-  background: crimson;
-  color: white;
-
-  font-family: 'Press Start 2P', cursive;
-  padding: 5px;
-  appearance: none;
-  border: 2px solid black;
 }

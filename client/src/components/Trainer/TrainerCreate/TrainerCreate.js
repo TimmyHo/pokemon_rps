@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../../axios';
 
 import Button from '../../UI/Button/Button';
+import Input from '../../UI/Input/Input';
 
 import classes from './TrainerCreate.module.css';
 
@@ -54,21 +55,20 @@ class TrainerCreate extends Component {
             case 'tag':
                 this.setState({tag: event.target.value});
                 break;
-
             default:
                 break;
         }
     }
 
-    componentDidMount() {
-         axios.get(`/trainers/${this.props.match.params.tag}`)
-         .then(response => {
-             this.setState({trainer: response.data});
-         })
-         .catch(error => {
-             this.setState({error: true});
-         });
-    }
+    // componentDidMount() {
+    //      axios.get(`/trainers/${this.props.match.params.tag}`)
+    //      .then(response => {
+    //          this.setState({trainer: response.data});
+    //      })
+    //      .catch(error => {
+    //          this.setState({error: true});
+    //      });
+    // }
 
     render() {
         return (
@@ -81,7 +81,7 @@ class TrainerCreate extends Component {
                             E-mail
                         </label>
                         <div className="col-7">
-                            <input className={`${classes.NativeInput}`} type="text" name="email" onChange={this.handleChange} value={this.state.email}/>
+                            <Input type="text" name="email" onChange={this.handleChange} value={this.state.email}/>
                         </div> 
                     </div>
                     <div className="row mt-2">   
@@ -89,7 +89,7 @@ class TrainerCreate extends Component {
                             Password
                         </label>
                         <div className="col-7">
-                            <input className={`${classes.NativeInput}`} type="password" name="password1" onChange={this.handleChange} value={this.state.password1}/>
+                            <Input type="password" name="password1" onChange={this.handleChange} value={this.state.password1}/>
                         </div> 
                     </div>
                     <div className="row mt-2 ">   
@@ -97,14 +97,14 @@ class TrainerCreate extends Component {
                             Confirm Password
                         </label>
                         <div className="col-7">
-                            <input className={`${classes.NativeInput}`} type="password" name="password2" onChange={this.handleChange} value={this.state.password2}/>
+                            <Input type="password" name="password2" onChange={this.handleChange} value={this.state.password2}/>
                         </div> 
                     </div>
                 </div>
 
                 <div className={`${classes.BoxedInfo} p-2 mt-4`}>
                     <div className="h4 text-center font-italic"><u>Trainer Info</u></div>
-                    <div className="row mt-2"> 
+                    <div className="row mt-3"> 
                         <div className="mx-auto">
                             <label className={classes.SpriteOption}>
                             <input 
@@ -131,7 +131,7 @@ class TrainerCreate extends Component {
                             Trainer Tag
                         </label>
                         <div className="col-7">
-                            <input className={`${classes.NativeInput}`} type="text" name="tag" onChange={this.handleChange} value={this.state.tag}/>
+                            <Input type="text" name="tag" onChange={this.handleChange} value={this.state.tag}/>
                         </div> 
                     </div>
                 </div>  
