@@ -72,37 +72,37 @@ class TrainerCreate extends Component {
 
     render() {
         return (
-            <div className="container-fluid d-flex flex-column w-50">
-                <div className="mt-3 h2 text-center">Create Trainer</div>
-                <div className={`${classes.BoxedInfo} p-2`}>
+            <div className="container-fluid">
+                <div className="mt-3 mx-auto h2 text-center">Create Trainer</div>
+                <div className={`${classes.BoxedInfo} p-2 mx-auto`}>
                     <div className="h4 text-center font-italic"><u>Account Info</u></div>
                     <div className="row mt-3">   
-                        <label className="col-5 text-right my-auto">
+                        <label className="col-3 text-right my-auto">
                             E-mail
                         </label>
-                        <div className="col-7">
+                        <div className="col-9">
                             <Input type="text" name="email" onChange={this.handleChange} value={this.state.email}/>
                         </div> 
                     </div>
                     <div className="row mt-2">   
-                        <label className="col-5 text-right my-auto">
+                        <label className="col-3 text-right my-auto">
                             Password
                         </label>
-                        <div className="col-7">
+                        <div className="col-9">
                             <Input type="password" name="password1" onChange={this.handleChange} value={this.state.password1}/>
                         </div> 
                     </div>
-                    <div className="row mt-2 ">   
-                        <label className="col-5 text-right my-auto">
+                    <div className="row mt-2">   
+                        <label className="col-3 text-right my-auto">
                             Confirm Password
                         </label>
-                        <div className="col-7">
+                        <div className="col-9">
                             <Input type="password" name="password2" onChange={this.handleChange} value={this.state.password2}/>
                         </div> 
                     </div>
                 </div>
 
-                <div className={`${classes.BoxedInfo} p-2 mt-4`}>
+                <div className={`${classes.BoxedInfo} p-2 mt-4 mx-auto`}>
                     <div className="h4 text-center font-italic"><u>Trainer Info</u></div>
                     <div className="row mt-3"> 
                         <div className="mx-auto">
@@ -127,21 +127,26 @@ class TrainerCreate extends Component {
                         </div>
                     </div>
                     <div className="row mt-2">   
-                        <label className="col-5 text-right my-auto">
+                        <label className="col-3 text-right my-auto">
                             Trainer Tag
                         </label>
-                        <div className="col-7">
+                        <div className="col-9">
                             <Input type="text" name="tag" onChange={this.handleChange} value={this.state.tag}/>
                         </div> 
                     </div>
                 </div>  
-                <div className="row mt-2">
-                    <Button onClick={this.createTrainerHandler} text="Create" />
-                    
-                    <Button to="/trainers" text="Back" />
+                <div className="row mt-3">
+                    <div className="mx-auto">
+                        <span className="mr-1">
+                            <Button className="mr-2" onClick={this.createTrainerHandler} text="Create" />
+                        </span>
+                        <span className="ml-1">
+                            <Button className="mr-2" to="/trainers" text="Back" />
+                        </span>
+                    </div>
                 </div>
             </div>
-        );          
+        );  
     }
 };
 

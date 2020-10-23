@@ -1,6 +1,12 @@
 .BoxedInfo {
   background: #cac5c6;
   border: 5px solid black;
+  box-sizing: border-box;
+  width: 500px;
+}
+
+.BoxedInfo label {
+  font-size: 0.75em;
 }
 
 .SpriteOption [type='radio'] {

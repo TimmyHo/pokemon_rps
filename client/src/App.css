@@ -10,4 +10,5 @@ html.wf-loading * {
 .Content {
   position: absolute;
   margin-top: 54px;
+  width: 100%;
 }
