@@ -12,7 +12,7 @@ const button = (props) => {
       );
     } else {
       buttonDiv = (
-        <button {...props} onclick={props.onClick} className={classes.Button}>
+        <button {...props} className={classes.Button}>
           {props.text}
         </button>
       )

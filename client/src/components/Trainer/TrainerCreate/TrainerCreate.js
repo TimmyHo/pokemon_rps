@@ -10,6 +10,7 @@ class TrainerCreate extends Component {
     
     maleTrainerSprite = '/img/sprites/male_trainer.png';
     femaleTrainerSprite = '/img/sprites/female_trainer.png';
+    starterPokemonIdList = [1,4,7,25]
 
     state = {
         email: '',
@@ -17,7 +18,7 @@ class TrainerCreate extends Component {
         password2: '',
         imageUrl: this.maleTrainerSprite,
         tag: '',
-
+        chosenPokemonId: 1,
         error: false
     }
 
@@ -26,7 +27,7 @@ class TrainerCreate extends Component {
             alert('Please input your email');
             return;
         }
-        else if (this.state.password1 === '' || this.state.password2) {
+        else if (this.state.password1 === '' || this.state.password2 === '') {
             alert('Please input a password');
             return;
         }
@@ -52,7 +53,6 @@ class TrainerCreate extends Component {
             alert(error.response.data.message);
             this.setState({error: true});
         });
-    
     }
 
     handleChange = (event) => {
@@ -72,6 +72,9 @@ class TrainerCreate extends Component {
             case 'tag':
                 this.setState({tag: event.target.value});
                 break;
+            case 'chosenPokemonId':
+                this.setState({chosenPokemonId: Number(event.target.value)});
+                break;
             default:
                 break;
         }
@@ -88,6 +91,8 @@ class TrainerCreate extends Component {
     // }
 
     render() {
+
+
         return (
             <div className="container-fluid">
                 <div className="mt-3 mx-auto h2 text-center">Create Trainer</div>
@@ -119,28 +124,28 @@ class TrainerCreate extends Component {
                     </div>
                 </div>
 
-                <div className={`${classes.BoxedInfo} p-2 mt-4 mx-auto`}>
+                <div className={`${classes.BoxedInfo} p-2 mt-3 mx-auto`}>
                     <div className="h4 text-center font-italic"><u>Trainer Info</u></div>
-                    <div className="row mt-3"> 
+                    <div className="row mt-2"> 
                         <div className="mx-auto">
                             <label className={classes.SpriteOption}>
+                                <input 
+                                    type="radio" 
+                                    name="imageUrl" 
+                                    value={this.maleTrainerSprite} 
+                                    checked={this.state.imageUrl === this.maleTrainerSprite} 
+                                    onChange={this.handleChange}/>
+                                <img className={classes.Sprite} src={this.maleTrainerSprite} alt="male trainer"/>
+                            </label>
+                            <label className={classes.SpriteOption}>
                             <input 
-                                type="radio" 
-                                name="imageUrl" 
-                                value={this.maleTrainerSprite} 
-                                checked={this.state.imageUrl === this.maleTrainerSprite} 
-                                onChange={this.handleChange}/>
-                            <img className={classes.TrainerSprite} src={this.maleTrainerSprite} alt="male trainer"/>
-                        </label>
-                        <label className={classes.SpriteOption}>
-                        <input 
-                                type="radio" 
-                                name="imageUrl" 
-                                value={this.femaleTrainerSprite} 
-                                checked={this.state.imageUrl === this.femaleTrainerSprite} 
-                                onChange={this.handleChange}/>
-                            <img className={classes.TrainerSprite} src={this.femaleTrainerSprite} alt="female trainer"/>
-                        </label>
+                                    type="radio" 
+                                    name="imageUrl" 
+                                    value={this.femaleTrainerSprite} 
+                                    checked={this.state.imageUrl === this.femaleTrainerSprite} 
+                                    onChange={this.handleChange}/>
+                                <img className={classes.Sprite} src={this.femaleTrainerSprite} alt="female trainer"/>
+                            </label>
                         </div>
                     </div>
                     <div className="row mt-2">   
@@ -151,8 +156,25 @@ class TrainerCreate extends Component {
                             <Input type="text" name="tag" onChange={this.handleChange} value={this.state.tag}/>
                         </div> 
                     </div>
+
+                    <div className="mt-2 h6 text-center font-italic">Choose Your Pokemon</div>
+                    <div className="row mt-2"> 
+                        <div className="mx-auto">
+                            {this.starterPokemonIdList.map(pokemonId => (
+                                <label className={`${classes.SpriteOption} m-1`} key={pokemonId}>
+                                    <input 
+                                        type="radio" 
+                                        name="chosenPokemonId" 
+                                        value={pokemonId} 
+                                        checked={this.state.chosenPokemonId === pokemonId} 
+                                        onChange={this.handleChange}/>
+                                    <img className={classes.Sprite} src={`https://www.serebii.net/xy/pokemon/${String(pokemonId).padStart(3, '0')}.png`} alt={`Pokemon #${pokemonId}`}/>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
                 </div>  
-                <div className="row mt-3">
+                <div className="row mt-2">
                     <div className="mx-auto">
                         <span className="mr-1">
                             <Button className="mr-2" onClick={this.createTrainerHandler} text="Create" />
@@ -163,6 +185,8 @@ class TrainerCreate extends Component {
                     </div>
                 </div>
             </div>
+
+            
         );  
     }
 };
