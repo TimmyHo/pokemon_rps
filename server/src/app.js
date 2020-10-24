@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const db = require('./db/db');
-const Pokemon = require('./models/pokemon');
+const PokedexData = require('./models/pokedexData');
 const Trainer = require('./models/trainer');
 
 const app = express();
@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/pokemon', async (req, res) => {
-    const allPokemon = await Pokemon.find({}, {
+app.get('/pokedex', async (req, res) => {
+    const allPokedexData = await PokedexData.find({}, {
         pokedex_id: 1,
         name: 1,
         type1: 1,
@@ -29,15 +29,15 @@ app.get('/pokemon', async (req, res) => {
         imageUrl: 1
     });
     
-    res.send(allPokemon);
+    res.send(allPokedexData);
 });
 
-app.get('/pokemon/:id', async (req, res) => {
-    const pokemon = await Pokemon.findOne({ 
+app.get('/pokedex/:id', async (req, res) => {
+    const pokedexData = await PokedexData.findOne({ 
         pokedex_id: parseInt(req.params.id) 
     });
 
-    res.send(pokemon);
+    res.send(pokedexData);
 });
 
 app.get('/trainers', async (req, res) => {

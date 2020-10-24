@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
-import PokemonDetails from './components/Pokemon/PokemonDetails/PokemonDetails';
-import PokemonList from './containers/PokemonList';
+import PokedexDetails from './components/Pokedex/PokedexDetails/PokedexDetails';
+import PokedexList from './containers/PokedexList';
 
 import TrainerDetails from './components/Trainer/TrainerDetails/TrainerDetails';
 import TrainerEdit from './components/Trainer/TrainerEdit/TrainerEdit';
@@ -22,10 +22,10 @@ function App() {
               <Route path='/trainers/:tag' component={TrainerDetails} />
               <Route path='/trainers' component={TrainerList} />
 
-              <Route path='/pokemon/:id' component={PokemonDetails} />
+              <Route path='/pokedex/:id' component={PokedexDetails} />
               
-              <Route path='/pokemon' component={PokemonList} />
-              <Route path='/' exact component={PokemonList} />
+              <Route path='/pokedex' component={PokedexList} />
+              <Route path='/' exact component={PokedexList} />
           </Switch>
         </div>
     </div>

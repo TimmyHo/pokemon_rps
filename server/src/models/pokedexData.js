@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const pokemonSchema = new mongoose.Schema({
+const pokedexDataSchema = new mongoose.Schema({
     pokedex_id: {
         type: Number,
         required: true,
@@ -63,6 +63,6 @@ const pokemonSchema = new mongoose.Schema({
     timestamps: false
 });
 
-const Pokemon = mongoose.model('Pokemon', pokemonSchema);
+const PokedexData = mongoose.model('PokedexData', pokedexDataSchema);
 
-module.exports = Pokemon;
+module.exports = PokedexData;

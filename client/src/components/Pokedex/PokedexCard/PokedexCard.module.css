@@ -1,4 +1,4 @@
-.PokemonCard {
+.PokedexCard {
   height: 210px;
   width: 210px;
 
@@ -10,7 +10,7 @@
   line-height: 1.2;
 }
 
-.PokemonImage {
+.PokedexImage {
   height: 100px;
   width: 100px;
   margin: 5px;

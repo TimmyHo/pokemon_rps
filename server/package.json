@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "seed-p": "node data/seed_pokemon.js",
+    "seed-pdx": "node data/seed_pokedex_data.js",
     "seed-t": "node data/seed_trainer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

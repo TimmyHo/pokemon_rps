@@ -11,7 +11,7 @@ const navbar = () => {
         <Navbar bg="secondary" variant="dark" fixed="top">
         <Navbar.Brand className="my-auto" href="/">Pokemon RPS</Navbar.Brand>
         <Nav className="ml-auto">
-          <Nav.Link href="/pokemon">Pokedex</Nav.Link>
+          <Nav.Link href="/pokedex">Pokedex</Nav.Link>
           <Nav.Link href="/trainers">Trainers</Nav.Link>
         </Nav>
       </Navbar>
