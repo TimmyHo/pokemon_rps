@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from '../../../axios';
+
+import Button from '../../UI/Button/Button';
 
 import classes from './TrainerDetails.module.css';
 
 class TrainerDetails extends Component {
     state = {
         trainer: null,
+        pokedex: null,
         error: false
     }
 
     componentDidMount() {
         axios.get(`/trainers/${this.props.match.params.tag}`)
         .then(response => {
-            this.setState({trainer: response.data});
+            console.log(response.data);
+
+            this.setState({trainer: response.data, pokedex: response.data.pokemonCompanion.pokedex});
+            // console.log(trainerData);
         })
-        .catch(error => {
+        .catch(err => {
+            console.log(err);
+            console.log(JSON.stringify(err, null, 2))
             this.setState({error: true});
         });
     }
@@ -23,23 +30,17 @@ class TrainerDetails extends Component {
     render() {
         let trainer = null;
         if (this.state.trainer !== null) {
-
             trainer = (
-                <div className={classes.FlexContainer}>
-                   {/* <div className={classes.TrainerHeader}> */}
-                       <div className={classes.TrainerTag}>{this.state.trainer.trainerTag}</div>
-                       <div className={classes.TrainerTagline}>{this.state.trainer.tagline}</div>
-                   {/* </div> */}
-                   <div className={classes.TrainerContent}>
-                       {/* <div className={classes.PokemonImageBox}>
-                       <img className={classes.PokemonImage} src="https://www.serebii.net/xy/pokemon/099.png" alt="trainer's pokemon"/>
-                       </div> */}
-                       <img className={classes.TrainerImage} src={this.state.trainer.trainerImageUrl} alt="trainer"/>
-                       <div className={classes.InfoContainer}>
-                           <div>Name: {this.state.trainer.name}</div>
-                           <div className={classes.TrainerInfo}>{this.state.trainer.info}</div>
+                <div className={`${classes.TrainerInfoContainer} mx-auto mt-4 p-3 d-flex flex-column`}>
+                    <div><span>Trainer: </span><span className="font-italic">{this.state.trainer.trainerTag}</span></div>
+                    
+                    <div className={`${classes.ImageContainer} d-flex flex-row`}>
+                        <img className={`${classes.TrainerImage} my-auto`} src={this.state.trainer.trainerImageUrl} alt="trainer"/>
+                       
+                        <div className={classes.PokemonImageBox}>
+                            <img className={classes.PokemonImage} src={this.state.pokedex.spriteUrl} alt="trainer's pokemon"/>
                         </div>
-                   </div>
+                    </div>
                 </div>
             );
         }
@@ -47,13 +48,13 @@ class TrainerDetails extends Component {
         return (
             <div className={classes.TrainerPage}>
                 {trainer}
-                <div className={classes.LinksContainer}>
-                <Link to={`/trainers/${this.props.match.params.tag}/edit`} className={classes.Button} >
-                    EDIT
-                </Link>
-                <Link to="/trainers" className={classes.Button}>
-                    Back To Trainers
-                </Link>
+                <div className="mt-3 d-flex-inline text-center">
+                    <span className="mr-1">
+                        <Button className="mr-2" to={`/trainers/${this.props.match.params.tag}/edit`} text="Edit" />
+                    </span>
+                    <span className="ml-1">
+                        <Button className="mr-2" to="/trainers" text="Back" />
+                    </span>
                 </div>
             </div>
         );

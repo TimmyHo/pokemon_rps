@@ -42,7 +42,7 @@ class TrainerCreate extends Component {
 
         axios.post('/trainers', {
             email: this.state.email,
-            password: this.state.password,
+            password: this.state.password1,
             imageUrl: this.state.imageUrl,
             tag: this.state.tag,
             pokemonId: this.state.chosenPokemonId

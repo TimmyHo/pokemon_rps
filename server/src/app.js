@@ -83,8 +83,13 @@ app.post('/trainers', async (req, res) => {
 app.get('/trainers/:tag', async (req, res) => {
     const trainer = await Trainer.findOne({
         trainerTag: req.params.tag 
+    }).populate({
+        path: 'pokemonCompanion',
+        populate: {
+            path: 'pokedex'
+        }
     });
-    
+
     res.send(trainer);
 });
 

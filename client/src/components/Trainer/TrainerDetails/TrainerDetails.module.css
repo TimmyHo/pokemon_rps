@@ -1,105 +1,37 @@
-.TrainerPage {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+.TrainerInfoContainer {
+  background: oldlace;
+  border: 10px solid black;
+  border-radius: 20px 20px;
+  width: 300px;
+  height: 300px;
+
+  box-sizing: border-box;
 }
 
-.FlexContainer {
-    display: flex;
-    flex-direction: column;
-
-
-    background: white;
-    border: 10px solid black;
-    border-radius: 20px 20px;
-    width: 600px;
-    height: 300px;
-
-    margin: 40px auto 25px auto;
-    padding: 20px;
-
-    text-align: left;
-}
-
-.TrainerHeader {
-    display: flex;
-    flex-direction: row;
-}
-
-.TrainerTag {
-    font-size: 2.5em;
-}
-
-.TrainerTagline {
-    font-style: italic;
-    margin-top: 5px;
-    /* margin-left: auto; */
-}
-
-.TrainerContent {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
+.ImageContainer {
+  height: 100%;
 }
 
 .PokemonImageBox {
-    border: 3px solid black;
-    border-radius: 50%;
-    /* display: block; */
-    height: 80px;
-    width: 80px;
+  background: white;
+  border: 3px solid black;
+  border-radius: 50%;
+  /* display: block; */
+  height: 80px;
+  width: 80px;
 
-    padding: 10px;
-    margin: auto 10px;
-    
+  padding: 10px;
+  margin: auto 10px;
 }
 
 .PokemonImage {
-    width: 100%;
+  width: 100%;
 }
 
 .TrainerImage {
-    margin: auto 10px;
-    height: 60%;
-    width: auto;
-    object-fit: cover;
-}
-
-.InfoContainer {
-    margin-top: 50px;
-    text-align: left;
-    width: 500px;
-    font-size: 0.8em;
-}
-
-.TrainerInfo {
-    font-size: 0.6em;
-    word-wrap: break-word;
-    line-height: 1.2;
-}
-
-.LinksContainer {
-    margin: 0 auto;
-    flex-direction: column;
-
-}
-
-.Button {
-    display: inline;
-    margin: 5px;
-    padding: 8px;
-    
-    border: 2px solid black;
-    background: black;
-    color: white;
-
-    text-decoration: none;
-}
-
-.Button:hover {
-    background: white;
-    color: black;
-
-    text-decoration: none; 
-    cursor: pointer; 
+  background: white;
+  border: 3px solid black;
+  height: 70%;
+  width: auto;
+  object-fit: cover;
 }
