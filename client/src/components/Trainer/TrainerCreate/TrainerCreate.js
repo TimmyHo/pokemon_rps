@@ -44,7 +44,8 @@ class TrainerCreate extends Component {
             email: this.state.email,
             password: this.state.password,
             imageUrl: this.state.imageUrl,
-            tag: this.state.tag
+            tag: this.state.tag,
+            pokemonId: this.state.chosenPokemonId
         })
         .then(response => {
             this.props.history.push(`/trainers/${response.data.trainerTag}`);

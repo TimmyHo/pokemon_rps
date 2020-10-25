@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const db = require('./db/db');
 const PokedexData = require('./models/pokedexData');
+const PokemonCreature = require('./models/pokemonCreature');
 const Trainer = require('./models/trainer');
 
 const app = express();
@@ -47,16 +48,28 @@ app.get('/trainers', async (req, res) => {
 });
 
 app.post('/trainers', async (req, res) => {
+    const pokedexData = await PokedexData.findOne({
+        pokedex_id: parseInt(req.body.pokemonId) 
+    });
+
+    const pokemonCreature = new PokemonCreature({
+        pokedex: pokedexData
+    });
+
     const trainer = new Trainer({
         email: req.body.email,
         password: req.body.password,
         trainerImageUrl: req.body.imageUrl,
-        trainerTag: req.body.tag
+        trainerTag: req.body.tag,
+        pokemonCompanion: pokemonCreature
     });
 
     try {
+        await pokemonCreature.save();
         await trainer.save();
     } catch(e) {
+        console.log('this is an error')
+        console.log(e);
         if (e.code === 11000) {
             return res.status(422).send({
                 message: 'email/trainer tag is already taken'

@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const PokemonCreature = require('./pokemonCreature');
 
 const trainerSchema = new mongoose.Schema({
     email: {
@@ -24,10 +27,15 @@ const trainerSchema = new mongoose.Schema({
         enum: ['ADMIN', 'TEST', 'BOT', 'USER'],
         default: 'USER',
         required: true
+    },
+    pokemonCompanion: { 
+        type: Schema.Types.ObjectId, 
+        ref: PokemonCreature
     }
 }, {
     timestamps: false
 });
+
 
 const Trainer = mongoose.model('Trainer', trainerSchema);
 
