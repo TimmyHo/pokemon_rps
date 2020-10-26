@@ -4,15 +4,21 @@ import classes from './Button.module.css';
 
 const button = (props) => {
     let buttonDiv = '';
+    let allClasses = classes.Button;
+
+    if (props.className) {
+      allClasses += ' '+props.className;
+    }
+
     if (props.to) {
       buttonDiv = (
-        <Link {...props} className={classes.Button}>
+        <Link {...props} className={allClasses}>
           {props.text}
         </Link>
       );
     } else {
       buttonDiv = (
-        <button {...props} className={classes.Button}>
+        <button {...props} className={allClasses}>
           {props.text}
         </button>
       )

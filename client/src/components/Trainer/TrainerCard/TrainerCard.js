@@ -1,27 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Button from '../../UI/Button/Button';
+
 import classes from './TrainerCard.module.css';
 
 const trainerCard = (props) => (
-    <div className={classes.TrainerCard}>
-        <div>
-            <img src={props.trainerImageUrl} alt={props.trainerTag}/>
-        </div>
-        <div className={classes.TagContainer}>
+    <div className={`${classes.TrainerCard} mx-2 p-2 d-flex flex-row`}>
+        
+            <img className={classes.TrainerImage} src={props.trainerImageUrl} alt={props.trainerTag}/>
+        <div className="ml-4 mr-auto my-auto">
             {props.trainerTag}
         </div>
 
-        <div className={classes.ActionsContainer}>
-            <Link to={`/trainers/${props.trainerTag}`} className={classes.Button}>
-                VIEW
-            </Link>
-            <Link to={`/trainers/${props.trainerTag}/edit`} className={classes.Button}>
-                EDIT
-            </Link>
-            <div className={classes.Button} onClick={() => props.delete(props.trainerTag)}>
-                DELETE
-            </div>
+        <div className="d-flex flex-column justify-content-between">
+            <Button to={`/trainers/${props.trainerTag}`} text="View" />
+            <Button to={`/trainers/${props.trainerTag}/edit`} text="Edit" />
+            <Button onClick={() => props.delete(props.trainerTag)} text="Delete" />
         </div>
     </div>
 );

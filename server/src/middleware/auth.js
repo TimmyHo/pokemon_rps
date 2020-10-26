@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
         const trainer = await Trainer.findOne({ _id: decoded._id, 'tokens': token});
 
         if (!trainer) {
-            throw new Error();
+            throw new Error('Trainer not found');
         }
 
         req.trainer = trainer;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from '../axios';
 
+import Button from '../components/UI/Button/Button';
 import TrainerCard from '../components/Trainer/TrainerCard/TrainerCard';
 
 import classes from './TrainerList.module.css';
@@ -50,14 +50,15 @@ class TrainerList extends Component {
                 return arr.concat(el); 
             }, []);
         }
-    
 
     return (
       <div>
-            <div className={classes.TrainerTitle}>Trainers</div>
-            <Link to="/trainers/create" className={classes.CreateButton}>
-                CREATE
-            </Link>
+            <div className="h2 text-center mt-3">Trainers</div>
+            <div className={classes.FloatingButtonContainer}>
+            <Button to="/trainers/create" text="Create" />
+            <Button to="/trainers/Login" text="Login" className="ml-2" />
+
+            </div>
             <div>
                 { trainerList }
             </div>
