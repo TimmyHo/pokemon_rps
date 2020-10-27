@@ -80,8 +80,7 @@ app.post('/trainers', async (req, res) => {
             
         res.status(201).send({ trainer, token });
     } catch(e) {
-        console.log('this is an error')
-        console.log(e);
+        console.log(`Error: ${e}`);
         if (e.code === 11000) {
             return res.status(422).send({
                 message: 'email/trainer tag is already taken'
@@ -108,11 +107,8 @@ app.put('/trainers/:tag', async (req, res) => {
         trainerTag: req.params.tag 
     }, {
         $set: {
-            trainerImageUrl: req.body.imageUrl,
-            trainerTag: req.body.tag,
-            name: req.body.name,
-            tagline: req.body.tagline,
-            info: req.body.info,
+            password: req.body.password,
+            trainerImageUrl: req.body.imageUrl
         }
     });
     
