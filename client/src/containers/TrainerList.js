@@ -44,6 +44,7 @@ class TrainerList extends Component {
                     key={trainerData.trainerTag}
                     delete={this.deleteTrainerHandler}
                     {...trainerData} 
+                    pokemonImageUrl={trainerData.pokemonCompanion.pokedex.spriteUrl}
                 />
             })
             .reduce((arr, el) => {

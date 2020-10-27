@@ -44,7 +44,13 @@ app.get('/pokedex/:id', async (req, res) => {
 });
 
 app.get('/trainers', async (req, res) => {
-    const allTrainers = await Trainer.find({});
+    const allTrainers = await Trainer.find({
+    }).populate({
+        path: 'pokemonCompanion',
+        populate: {
+            path: 'pokedex'
+        }
+    });
     
     res.send(allTrainers);
 });
