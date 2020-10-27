@@ -1,144 +1,36 @@
-.TrainerPage {
-    margin: 25px;
-    display: flex;
-    flex-direction: column;
-    align-items: center
+.BoxedInfo {
+  background: #cac5c6;
+  border: 5px solid black;
+  box-sizing: border-box;
+  width: 500px;
 }
 
-.TrainerPage label {
-    margin: 5px 0px;
-    text-align: right;
+.BoxedInfo label {
+  font-size: 0.75em;
 }
 
-.EditHeader {
-    text-align: center;
-    font-size: 2.5em;
-}
-
-.SpriteContainer {
-    margin: 5px;
-}
-
-.SpriteOption [type=radio] { 
+.SpriteOption [type='radio'] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.SpriteOption [type=radio] + img {
+.SpriteOption [type='radio'] + img {
   cursor: pointer;
 }
 
-.SpriteOption [type=radio]:checked + img {
+.SpriteOption [type='radio']:checked + img {
   outline: 4px solid black;
   background: crimson;
 }
 
-.TrainerSprite {
-    height: 100px;
-    padding: 5px;
-    margin: 5px;
+.SpriteOption [type='radio']:disabled + img {
+  outline: 4px solid black;
+  background: lightgray;
+  cursor: default;
 }
 
-.TrainerInputContainer {
-    display: inline-grid;
-    grid-template-columns: auto auto;
-    gap: 5px;
-}
-
-.InputSpacer {
-    grid-column: 1 / span 2;
-    height: 30px;
-}
-
-.NativeInput {
-    background: crimson;
-    color: white;
-
-    font-family: 'Press Start 2P', cursive;
-    padding: 5px;
-    appearance: none;
-    border: 2px solid black;
-}
-
-.NativeInput:disabled {
-    background: silver;
-    color: black;
-}
-
-.InputArea {
-    height: 100px;
-}
-
-.ToolTip {
-    position: relative;
-}
-
-.InfoIcon {
-    position: relative;
-    border: 2px solid black;
-    border-radius: 50%;
-    background: blue;
-    color: white;
-    padding: 5px;
-    margin: 5px;
-    font-size: 0.8em;   
-}
-
-
-.Tooltip .TooltipText {
-    visibility: hidden;
-    background-color: black;
-    color: #fff;
-    text-align: left;
-    border-radius: 4px;
-    padding: 5px;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: 22px;
-    left: 22px;
-    font-size: 0.8em;
-    line-height: 1.1;
-
-    white-space: pre;
-}
-
-.Tooltip:hover .TooltipText {
-    visibility: visible;
-    cursor: pointer
-}
-
-.LinksContainer {
-    margin: 5px;
-}
-
-.NativeButton {
-    appearance: none;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1em;
-}
-
-.Button {
-    display: inline-block;
-    margin: 5px;
-    padding: 6px;
-
-
-    border: 2px solid black;
-    background: black;
-    color: white;
-
-    text-align: center;
-    text-decoration: none;
-}
-
-.Button:hover {
-    background: white;
-    color: black;
-
-    text-decoration: none; 
-    cursor: pointer; 
+.Sprite {
+  height: 100px;
 }

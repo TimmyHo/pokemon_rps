@@ -5,3 +5,8 @@
   appearance: none;
   border: 2px solid black;
 }
+
+.Input:disabled {
+  background: lightgray;
+  color: darkgray;
+}

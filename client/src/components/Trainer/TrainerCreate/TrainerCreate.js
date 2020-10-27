@@ -7,7 +7,6 @@ import Input from '../../UI/Input/Input';
 import classes from './TrainerCreate.module.css';
 
 class TrainerCreate extends Component {
-    
     maleTrainerSprite = '/img/sprites/male_trainer.png';
     femaleTrainerSprite = '/img/sprites/female_trainer.png';
     starterPokemonIdList = [1,4,7,25]
@@ -186,8 +185,6 @@ class TrainerCreate extends Component {
                     </div>
                 </div>
             </div>
-
-            
         );  
     }
 };
