@@ -61,7 +61,7 @@ trainerSchema.statics.findByCredentials = async (email, password) => {
 
 trainerSchema.methods.generateAuthToken = async function () {
     const trainer = this;
-    const token = jwt.sign({ _id: trainer._id.toString() }, process.env.JWT_SECRET);
+    const token = jwt.sign({ _id: trainer._id.toString(), tag: trainer.tag }, process.env.JWT_SECRET);
     
     trainer.tokens = trainer.tokens.concat(token);
     await trainer.save();

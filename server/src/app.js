@@ -1,8 +1,10 @@
 const express = require('express');
 const cors = require('cors');
+const cookieSession = require('cookie-session');
 
 const db = require('./db/db');
-const auth = require('./middleware/auth');
+const requireAuth = require('./middleware/requireAuth');
+const currentTrainer = require('./middleware/currentTrainer');
 
 const PokedexData = require('./models/pokedexData');
 const PokemonCreature = require('./models/pokemonCreature');
@@ -13,9 +15,15 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-
 app.use(cors());
 app.use(express.json()); // support json encoded bodies
+
+app.use(
+    cookieSession({
+      signed: false,
+      // secure: process.env.NODE_ENV !== 'test'
+    })
+  );
 
 app.get('/', (req, res) => {
     res.send({
@@ -23,7 +31,7 @@ app.get('/', (req, res) => {
     });
 });
 
-app.get('/pokedex', async (req, res) => {
+app.get('/pokedex', currentTrainer, async (req, res) => {
     const allPokedexData = await PokedexData.find({}, {
         pokedex_id: 1,
         name: 1,
@@ -35,7 +43,7 @@ app.get('/pokedex', async (req, res) => {
     res.send(allPokedexData);
 });
 
-app.get('/pokedex/:id', async (req, res) => {
+app.get('/pokedex/:id', currentTrainer, async (req, res) => {
     const pokedexData = await PokedexData.findOne({ 
         pokedex_id: parseInt(req.params.id) 
     });
@@ -43,7 +51,7 @@ app.get('/pokedex/:id', async (req, res) => {
     res.send(pokedexData);
 });
 
-app.get('/trainers', async (req, res) => {
+app.get('/trainers', currentTrainer, async (req, res) => {
     const allTrainers = await Trainer.find({
     }).populate({
         path: 'pokemonCompanion',
@@ -78,7 +86,11 @@ app.post('/trainers', async (req, res) => {
 
         const token = await trainer.generateAuthToken();
             
-        res.status(201).send({ trainer, token });
+        req.session = {
+            jwt: token
+        }
+
+        res.status(201).send(trainer);
     } catch(e) {
         console.log(`Error: ${e}`);
         if (e.code === 11000) {
@@ -89,7 +101,7 @@ app.post('/trainers', async (req, res) => {
     }
 });
 
-app.get('/trainers/:tag', async (req, res) => {
+app.get('/trainers/:tag', currentTrainer, async (req, res) => {
     const trainer = await Trainer.findOne({
         trainerTag: req.params.tag 
     }).populate({
@@ -131,29 +143,38 @@ app.post('/trainers/login', async (req, res) => {
         console.log(trainer);
         const token = await trainer.generateAuthToken();
 
+        req.session = {
+            jwt: token
+        }
+
         console.log(token);
-        res.send({ trainer, token });
+        res.send(trainer);
     } catch (e) {
         console.log(e);
         res.status(400).send(e);
     }
 });
 
-app.post('/trainers/logout', auth, async (req, res) => {
+app.post('/trainers/logout', currentTrainer, requireAuth, async (req, res) => {
     try {
-        req.trainer.tokens = req.trainer.tokens.filter((token) => token.token !== req.token);
+        req.trainer.tokens = req.trainer.tokens.filter((token) => jwt in req.session && token.token !== req.session.jwt);
         await req.trainer.save();
+
+        req.session = null;
+
         res.send();
     } catch (e) {
         res.status(500).send();
     }
 });
 
-app.post('/trainers/logoutAll', auth, async (req, res) => {
+app.post('/trainers/logoutAll', currentTrainer, requireAuth, async (req, res) => {
     try {
         req.trainer.tokens = [];
 
         await req.trainer.save();
+        req.session = null;
+
         res.send();
     } catch (e) {
         res.status(500).send();
