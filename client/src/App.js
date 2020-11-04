@@ -12,17 +12,17 @@ import PokedexDetails from './components/Pokedex/PokedexDetails/PokedexDetails';
 import TrainerList from './containers/TrainerList';
 import TrainerCreate from './components/Trainer/TrainerCreate/TrainerCreate';
 import TrainerLogin from './components/Trainer/TrainerLogin/TrainerLogin';
+import TrainerLogout from './components/Trainer/TrainerLogout/TrainerLogout';
 import TrainerDetails from './components/Trainer/TrainerDetails/TrainerDetails';
 import TrainerEdit from './components/Trainer/TrainerEdit/TrainerEdit';
 
 function App() {
-  // console.log('COOKIES - JWT', Cookies.get('jwt'));
+  console.log('COOKIES - JWT', Cookies.get('jwt'));
 
   const userJwt = Cookies.get('jwt');
   let trainer = null;
   if (userJwt) {
     trainer = jwt.decode(userJwt);
-    
   }
 
   return (
@@ -32,6 +32,7 @@ function App() {
           <Switch>
               <Route path='/trainers/create' exact component={TrainerCreate} />
               <Route path='/trainers/login' exact component={TrainerLogin}/>
+              <Route path='/trainers/logout' exact component={TrainerLogout}/>
               <Route path='/trainers/:tag/edit' component={TrainerEdit} />
               <Route path='/trainers/:tag' component={TrainerDetails} />
               <Route path='/trainers' component={TrainerList} />

@@ -181,9 +181,10 @@ app.post('/trainers/logout', currentTrainer, requireAuth, async (req, res) => {
         await req.trainer.save();
 
         // req.session = null;
+        console.log('CLEARING COOKIE');
         res.clearCookie('jwt');
 
-        res.send();
+        res.send({message: 'i am logging out'});
     } catch (e) {
         res.status(500).send();
     }
