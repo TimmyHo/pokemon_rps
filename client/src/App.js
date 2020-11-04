@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import jwt from 'jsonwebtoken';
 import './App.css';
-
-
 
 import MainNavbar from './components/Navigation/MainNavbar';
 
@@ -16,9 +16,18 @@ import TrainerDetails from './components/Trainer/TrainerDetails/TrainerDetails';
 import TrainerEdit from './components/Trainer/TrainerEdit/TrainerEdit';
 
 function App() {
+  // console.log('COOKIES - JWT', Cookies.get('jwt'));
+
+  const userJwt = Cookies.get('jwt');
+  let trainer = null;
+  if (userJwt) {
+    trainer = jwt.decode(userJwt);
+    
+  }
+
   return (
     <div className="App">
-        <MainNavbar /> 
+        <MainNavbar trainer={trainer} /> 
         <div className="p-0 Content">
           <Switch>
               <Route path='/trainers/create' exact component={TrainerCreate} />

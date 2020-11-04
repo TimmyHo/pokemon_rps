@@ -14,7 +14,7 @@ class PokedexList extends Component {
     componentDidMount() {
         axios.get('/pokedex')
         .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.setState({pokedex: response.data})
         })
         .catch(error => {

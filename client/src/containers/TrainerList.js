@@ -12,6 +12,13 @@ class TrainerList extends Component {
         error: false
     }
 
+    logoutHandler = () => {
+        axios.post('/trainers/logout')
+        .catch(error => {
+            this.setState({error: true});
+        });
+    }
+
     deleteTrainerHandler = (trainerTag) => {
         axios.delete('/trainers/'+trainerTag)
         .then(response => {
@@ -56,9 +63,9 @@ class TrainerList extends Component {
       <div>
             <div className="h2 text-center mt-3">Trainers</div>
             <div className={classes.FloatingButtonContainer}>
-            <Button to="/trainers/create" text="Create" />
-            <Button to="/trainers/Login" text="Login" className="ml-2" />
-
+                <Button to="/trainers/create" text="Create" />
+                <Button to="/trainers/login" text="Login" className="ml-2" />
+                <Button onClick={() => this.logoutHandler()} className="ml-2" text="Logout" />
             </div>
             <div>
                 { trainerList }

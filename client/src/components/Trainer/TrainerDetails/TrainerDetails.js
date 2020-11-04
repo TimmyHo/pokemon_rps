@@ -13,9 +13,11 @@ class TrainerDetails extends Component {
     }
 
     componentDidMount() {
-        axios.get(`/trainers/${this.props.match.params.tag}`)
+        axios.get(`/trainers/${this.props.match.params.tag}`,)
         .then(response => {
-            console.log(response.data);
+            // console.log('DOCUMENT', document.cookie);
+            // console.log(response);
+            // console.log(response.data);
 
             this.setState({trainer: response.data, pokedex: response.data.pokemonCompanion.pokedex});
             // console.log(trainerData);

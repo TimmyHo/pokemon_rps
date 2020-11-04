@@ -28,9 +28,10 @@ class TrainerLogin extends Component {
             password: this.state.password,
         })
         .then(response => {
-            this.props.history.push(`/trainers/${response.data.trainer.trainerTag}`);
+            this.props.history.push(`/trainers/${response.data.trainerTag}`);
         })
         .catch(error => {
+            console.log(error);
             alert(error.response.data.message);
             this.setState({error: true});
         });

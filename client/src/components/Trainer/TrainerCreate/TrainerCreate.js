@@ -91,8 +91,6 @@ class TrainerCreate extends Component {
     // }
 
     render() {
-
-
         return (
             <div className="container-fluid">
                 <div className="mt-3 mx-auto h2 text-center">Create Trainer</div>

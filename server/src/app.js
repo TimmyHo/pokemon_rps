@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const cookieSession = require('cookie-session');
+const cookieParser = require('cookie-parser');
+
 
 const db = require('./db/db');
 const requireAuth = require('./middleware/requireAuth');
@@ -15,7 +17,15 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+ 
+app.set('trust proxy', true) // trust first proxy
+
+app.use(cookieParser());
+// app.use(cors());
+app.use(cors({
+    credentials: true,
+    origin: "http://localhost:3000"
+  }));
 app.use(express.json()); // support json encoded bodies
 
 app.use(
@@ -86,9 +96,11 @@ app.post('/trainers', async (req, res) => {
 
         const token = await trainer.generateAuthToken();
             
-        req.session = {
-            jwt: token
-        }
+        // req.session = {
+        //     jwt: token
+        // }
+        
+        res.cookie('jwt', token);
 
         res.status(201).send(trainer);
     } catch(e) {
@@ -111,6 +123,11 @@ app.get('/trainers/:tag', currentTrainer, async (req, res) => {
         }
     });
 
+    // req.session = {
+    //     test: 'i am awesome'
+    // }
+    // console.log('NEW SESSION', req.session)
+
     res.send(trainer);
 });
 
@@ -132,7 +149,7 @@ app.delete('/trainers/:tag', async (req, res) => {
         trainerTag: req.params.tag 
     });
     
-    res.send({ message: 'Deleted '+req.params.tag});
+    res.send({ message: 'Deleted '+req.params.tag });
 });
 
 
@@ -140,27 +157,31 @@ app.post('/trainers/login', async (req, res) => {
     try {
         const trainer = await Trainer.findByCredentials(req.body.email, req.body.password)
 
-        console.log(trainer);
+        // console.log(trainer);
         const token = await trainer.generateAuthToken();
 
-        req.session = {
-            jwt: token
-        }
+        // req.session = {
+        //     jwt: token
+        // }
+        
+
+    res.cookie('jwt', token);
 
         console.log(token);
         res.send(trainer);
     } catch (e) {
-        console.log(e);
+        console.log('ERROR', e);
         res.status(400).send(e);
     }
 });
 
 app.post('/trainers/logout', currentTrainer, requireAuth, async (req, res) => {
     try {
-        req.trainer.tokens = req.trainer.tokens.filter((token) => jwt in req.session && token.token !== req.session.jwt);
+        req.trainer.tokens = req.trainer.tokens.filter((token) => token.token !== req.cookies['jwt']);
         await req.trainer.save();
 
-        req.session = null;
+        // req.session = null;
+        res.clearCookie('jwt');
 
         res.send();
     } catch (e) {
@@ -173,7 +194,9 @@ app.post('/trainers/logoutAll', currentTrainer, requireAuth, async (req, res) =>
         req.trainer.tokens = [];
 
         await req.trainer.save();
-        req.session = null;
+        // req.session = null;
+        
+        res.clearCookie('jwt');
 
         res.send();
     } catch (e) {

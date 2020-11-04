@@ -4,19 +4,38 @@ const Trainer = require('../models/trainer');
 
 const currentTrainer = async (req, res, next) => {
     try {
-        if (req.session === null || req.session.jwt === null) {
-          return next();
+        console.log('CURRENT TRAINER REQUEST', req.cookies)
+
+        if (!req.cookies) {
+            // console.log('no cookie defined')
+            return next();
         }
 
-        const token = req.session.jwt;
+
+        const token = req.cookies['jwt'];
+
+
+        // console.log('token: ', token);
+
+        if (!token) {
+            // console.log('no token');
+            return next();
+        }
+
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        
-        const trainer = await Trainer.findOne({ _id: decoded._id, 'tokens': token});
+
+        console.log('DECODED AFTER VERIFY', decoded)
+        // console.log('before trainer check');
+        const trainer = await Trainer.findOne({ _id: decoded.id, 'tokens': token});
+
 
         req.trainer = trainer;
+
+        console.log('CURRENT TRAINER is', req.trainer);
         next();
     } catch (e) {
-        res.status(401).send({error: 'Please authenticate'});
+        console.log(e);
+        res.status(401).send({message: 'Please authenticate'});
     }
 }
 
