@@ -170,8 +170,7 @@ app.post('/trainers/login', async (req, res) => {
         console.log(token);
         res.send(trainer);
     } catch (e) {
-        console.log('ERROR', e);
-        res.status(400).send(e);
+        res.status(400).send({ message: e.message });
     }
 });
 
