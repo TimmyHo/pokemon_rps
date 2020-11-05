@@ -5,7 +5,9 @@ class TrainerLogout extends Component {
     componentDidMount() {
         axios.post(`/trainers/logout`)
         .then(response => {
-          console.log('LOGOUT RESPONSE', response);
+            console.log('LOGOUT RESPONSE', response);
+          
+            this.props.updateAuthHandler(false);
             this.props.history.push('/');
         })
         .catch(error => {

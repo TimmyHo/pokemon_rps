@@ -47,6 +47,8 @@ class TrainerCreate extends Component {
             pokemonId: this.state.chosenPokemonId
         })
         .then(response => {
+            
+            this.props.updateAuthHandler(true);
             this.props.history.push(`/trainers/${response.data.trainerTag}`);
         })
         .catch(error => {

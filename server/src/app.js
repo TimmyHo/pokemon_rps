@@ -182,8 +182,13 @@ app.post('/trainers/login', async (req, res) => {
     }
 });
 
-app.post('/trainers/logout', currentTrainer, requireAuth, async (req, res) => {
+app.post('/trainers/logout', currentTrainer, async (req, res) => {
+    if (req.trainer === null) {
+        return res.send({message: 'no user to logout'});
+    }
+    
     try {
+
         req.trainer.tokens = req.trainer.tokens.filter((token) => token.token !== req.cookies['jwt']);
         await req.trainer.save();
 
@@ -191,13 +196,17 @@ app.post('/trainers/logout', currentTrainer, requireAuth, async (req, res) => {
         console.log('CLEARING COOKIE');
         res.clearCookie('jwt');
 
-        res.send({message: 'i am logging out'});
+        res.send({message: 'I am logging out'});
     } catch (e) {
-        res.status(500).send();
+        res.status(400).send();
     }
 });
 
 app.post('/trainers/logoutAll', currentTrainer, requireAuth, async (req, res) => {
+    if (req.trainer === null) {
+        return res.send({message: 'no user to logout'});
+    }
+
     try {
         req.trainer.tokens = [];
 

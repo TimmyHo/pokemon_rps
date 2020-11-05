@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import jwt from 'jsonwebtoken';
 import './App.css';
+
+import { getTrainer } from './utils/auth';
 
 import MainNavbar from './components/Navigation/MainNavbar';
 
@@ -16,34 +16,51 @@ import TrainerLogout from './components/Trainer/TrainerLogout/TrainerLogout';
 import TrainerDetails from './components/Trainer/TrainerDetails/TrainerDetails';
 import TrainerEdit from './components/Trainer/TrainerEdit/TrainerEdit';
 
-function App() {
-  console.log('COOKIES - JWT', Cookies.get('jwt'));
-
-  const userJwt = Cookies.get('jwt');
-  let trainer = null;
-  if (userJwt) {
-    trainer = jwt.decode(userJwt);
+class App extends Component {
+  state = {
+    isLoggedIn: false,
+    trainer: null
   }
 
-  return (
-    <div className="App">
-        <MainNavbar trainer={trainer} /> 
-        <div className="p-0 Content">
-          <Switch>
-              <Route path='/trainers/create' exact component={TrainerCreate} />
-              <Route path='/trainers/login' exact component={TrainerLogin}/>
-              <Route path='/trainers/logout' exact component={TrainerLogout}/>
-              <Route path='/trainers/:tag/edit' component={TrainerEdit} />
-              <Route path='/trainers/:tag' component={TrainerDetails} />
-              <Route path='/trainers' component={TrainerList} />
+  componentDidMount() {
+    let trainer = getTrainer();
 
-              <Route path='/pokedex/:id' component={PokedexDetails} />
-              <Route path='/pokedex' component={PokedexList} />
-              <Route path='/' exact component={PokedexList} />
-          </Switch>
-        </div>
-    </div>
-  );
+    this.setState({ isLoggedIn: trainer !== null, trainer: trainer });
+  }
+
+  updateAuthState = (loggedInState) => {
+    let trainer = getTrainer();
+    this.setState({isLoggedIn: loggedInState, trainer: trainer})
+  }
+
+  render() {
+    return (
+      <div className="App">
+          <MainNavbar isLoggedIn={this.state.isLoggedIn} loginHandler={this.updateAuthState}/> 
+          <div className="p-0 Content">
+            <Switch>
+                <Route path='/trainers/create' exact render={(props) => (
+                  <TrainerCreate {...props} updateAuthHandler={this.updateAuthState} />)} />
+                <Route path='/trainers/login' exact render={(props) => (
+                  <TrainerLogin {...props} updateAuthHandler={this.updateAuthState} />)} />
+                <Route path='/trainers/logout' exact render={(props) => (
+                  <TrainerLogout {...props} updateAuthHandler={this.updateAuthState} />)} />
+
+                <Route path='/trainers/:tag/edit' exact render={(props) => (
+                  <TrainerEdit {...props} trainer={this.state.trainer} />)} />
+
+                <Route path='/trainers/:tag/edit' component={TrainerEdit} />
+                <Route path='/trainers/:tag' component={TrainerDetails} />
+                <Route path='/trainers' component={TrainerList} />
+
+                <Route path='/pokedex/:id' component={PokedexDetails} />
+                <Route path='/pokedex' component={PokedexList} />
+                <Route path='/' exact component={PokedexList} />
+            </Switch>
+          </div>
+      </div>
+    );
+  }
 }
 
 export default App;
