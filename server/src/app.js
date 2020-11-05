@@ -131,7 +131,11 @@ app.get('/trainers/:tag', currentTrainer, async (req, res) => {
     res.send(trainer);
 });
 
-app.put('/trainers/:tag', async (req, res) => {
+app.put('/trainers/:tag', currentTrainer, requireAuth, async (req, res) => {
+    if (req.params.tag != req.trainer.trainerTag) {
+        return res.status(401).send({ message: 'Not authorized'});
+    }
+        
     const trainer = await Trainer.findOneAndUpdate({
         trainerTag: req.params.tag 
     }, {
@@ -144,7 +148,11 @@ app.put('/trainers/:tag', async (req, res) => {
     res.send(trainer);
 });
 
-app.delete('/trainers/:tag', async (req, res) => {
+app.delete('/trainers/:tag', currentTrainer, requireAuth, async (req, res) => {
+    if (req.params.tag != req.trainer.trainerTag) {
+        return res.status(401).send({ message: 'Not authorized'});
+    }
+
     await Trainer.deleteOne({
         trainerTag: req.params.tag 
     });

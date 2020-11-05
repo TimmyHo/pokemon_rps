@@ -28,6 +28,7 @@ class TrainerList extends Component {
             this.setState({trainers: newTrainers});
         })
         .catch(error => {
+            alert(error.response.data.message);
             this.setState({error: true});
         });
     }

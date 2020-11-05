@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from '../../../axios';
 
+import { getTrainer } from '../../../utils/auth';
+
 import Input from '../../UI/Input/Input';
 import Button from '../../UI/Button/Button';
 
@@ -68,6 +70,12 @@ class TrainerEdit extends Component {
       }
 
     componentDidMount() {
+        const trainer = getTrainer();
+
+        if (this.props.match.params.tag != trainer.tag) {
+            return this.props.history.push('/trainers');
+        }
+
         axios.get(`/trainers/${this.props.match.params.tag}`)
         .then(response => {
             const trainer = response.data;

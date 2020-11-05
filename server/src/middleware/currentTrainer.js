@@ -10,8 +10,7 @@ const currentTrainer = async (req, res, next) => {
             // console.log('no cookie defined')
             return next();
         }
-
-
+        
         const token = req.cookies['jwt'];
 
 
@@ -24,14 +23,12 @@ const currentTrainer = async (req, res, next) => {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        console.log('DECODED AFTER VERIFY', decoded)
         // console.log('before trainer check');
         const trainer = await Trainer.findOne({ _id: decoded.id, 'tokens': token});
 
 
         req.trainer = trainer;
 
-        console.log('CURRENT TRAINER is', req.trainer);
         next();
     } catch (e) {
         console.log(e);

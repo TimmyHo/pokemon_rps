@@ -2,23 +2,25 @@ import React from 'react';
 
 // import classes from './MainNavbar.module.css';
 
+
+import { getTrainer } from '../../utils/auth';
+
 const navbar = (props) => {
+  const trainer = getTrainer();
+
   const links = [
-    !props.trainer && { label: 'Sign-Up', href: '/trainers/create' },
-    !props.trainer && { label: 'Sign-In', href: '/trainers/login' },
-    props.trainer && { label: 'Sign-Out', href: '/trainers/logout' },
+    !trainer && { label: 'Sign-Up', href: '/trainers/create' },
+    !trainer && { label: 'Sign-In', href: '/trainers/login' },
+    trainer && { label: 'Sign-Out', href: '/trainers/logout' },
     { label: 'Pokedex', href: '/pokedex' },
     { label: 'Trainers', href: '/trainers' },
   ]
   .filter(linkConfig => linkConfig)
   .map(({ label, href }) => {
     return (
-
         <a key={href} className="nav-item nav-link" href={href}>{label}</a>
-      
     );
   });
-
 
     console.log('NAVBAR PROPS:', props)
 
