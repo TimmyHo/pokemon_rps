@@ -40,7 +40,15 @@ const trainerSchema = new mongoose.Schema({
             required: true  
     }],
 }, {
-    timestamps: false
+    timestamps: false, 
+    toJSON: {
+        transform(doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.password;
+            delete ret.tokens;
+        }
+    }
 });
 
 trainerSchema.statics.findByCredentials = async (email, password) => {
@@ -67,16 +75,6 @@ trainerSchema.methods.generateAuthToken = async function () {
     await trainer.save();
     
     return token;
-}
-
-trainerSchema.methods.toJSON = function () {
-    const trainer = this;
-    const trainerObject = trainer.toObject();
-
-    delete trainerObject.password;
-    delete trainerObject.tokens;
-
-    return trainerObject;
 }
 
 // Hash the plain text password before saving
