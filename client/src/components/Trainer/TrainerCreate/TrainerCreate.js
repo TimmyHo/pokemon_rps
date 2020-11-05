@@ -82,16 +82,6 @@ class TrainerCreate extends Component {
         }
     }
 
-    // componentDidMount() {
-    //      axios.get(`/trainers/${this.props.match.params.tag}`)
-    //      .then(response => {
-    //          this.setState({trainer: response.data});
-    //      })
-    //      .catch(error => {
-    //          this.setState({error: true});
-    //      });
-    // }
-
     render() {
         return (
             <div className="container-fluid">

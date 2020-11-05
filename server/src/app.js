@@ -3,7 +3,6 @@ const cors = require('cors');
 const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 
-
 const db = require('./db/db');
 const requireAuth = require('./middleware/requireAuth');
 const currentTrainer = require('./middleware/currentTrainer');
@@ -21,10 +20,11 @@ const port = process.env.PORT || 5000;
 app.set('trust proxy', true) // trust first proxy
 
 app.use(cookieParser());
-// app.use(cors());
+
+// to pass cookies from server domain to client
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:3000"
+    origin: process.env.CLIENT_URL
   }));
 app.use(express.json()); // support json encoded bodies
 
@@ -94,12 +94,7 @@ app.post('/trainers', async (req, res) => {
         await pokemonCreature.save();
         await trainer.save();
 
-        const token = await trainer.generateAuthToken();
-            
-        // req.session = {
-        //     jwt: token
-        // }
-        
+        const token = await trainer.generateAuthToken();        
         res.cookie('jwt', token);
 
         res.status(201).send(trainer);
@@ -122,11 +117,6 @@ app.get('/trainers/:tag', currentTrainer, async (req, res) => {
             path: 'pokedex'
         }
     });
-
-    // req.session = {
-    //     test: 'i am awesome'
-    // }
-    // console.log('NEW SESSION', req.session)
 
     res.send(trainer);
 });
@@ -164,18 +154,9 @@ app.delete('/trainers/:tag', currentTrainer, requireAuth, async (req, res) => {
 app.post('/trainers/login', async (req, res) => {
     try {
         const trainer = await Trainer.findByCredentials(req.body.email, req.body.password)
-
-        // console.log(trainer);
         const token = await trainer.generateAuthToken();
+        res.cookie('jwt', token);
 
-        // req.session = {
-        //     jwt: token
-        // }
-        
-
-    res.cookie('jwt', token);
-
-        console.log(token);
         res.send(trainer);
     } catch (e) {
         res.status(400).send({ message: e.message });
@@ -184,19 +165,15 @@ app.post('/trainers/login', async (req, res) => {
 
 app.post('/trainers/logout', currentTrainer, async (req, res) => {
     if (req.trainer === null) {
-        return res.send({message: 'no user to logout'});
+        return res.send({message: 'No user to logout'});
     }
     
     try {
-
         req.trainer.tokens = req.trainer.tokens.filter((token) => token.token !== req.cookies['jwt']);
         await req.trainer.save();
-
-        // req.session = null;
-        console.log('CLEARING COOKIE');
         res.clearCookie('jwt');
 
-        res.send({message: 'I am logging out'});
+        res.send();
     } catch (e) {
         res.status(400).send();
     }
@@ -204,15 +181,12 @@ app.post('/trainers/logout', currentTrainer, async (req, res) => {
 
 app.post('/trainers/logoutAll', currentTrainer, requireAuth, async (req, res) => {
     if (req.trainer === null) {
-        return res.send({message: 'no user to logout'});
+        return res.send({message: 'No user to logout'});
     }
 
     try {
         req.trainer.tokens = [];
-
         await req.trainer.save();
-        // req.session = null;
-        
         res.clearCookie('jwt');
 
         res.send();

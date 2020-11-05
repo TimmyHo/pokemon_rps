@@ -24,7 +24,6 @@ class App extends Component {
 
   componentDidMount() {
     let trainer = getTrainer();
-
     this.setState({ isLoggedIn: trainer !== null, trainer: trainer });
   }
 
@@ -48,8 +47,7 @@ class App extends Component {
 
                 <Route path='/trainers/:tag/edit' exact render={(props) => (
                   <TrainerEdit {...props} trainer={this.state.trainer} />)} />
-
-                <Route path='/trainers/:tag/edit' component={TrainerEdit} />
+                  
                 <Route path='/trainers/:tag' component={TrainerDetails} />
                 <Route path='/trainers' component={TrainerList} />
 

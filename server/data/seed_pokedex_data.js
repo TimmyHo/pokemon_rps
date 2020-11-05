@@ -38,7 +38,7 @@ const savePokedexData = async () => {
             spriteUrl: `https://www.serebii.net/xy/pokemon/${pokedexData.pokedex_number.padStart(3, '0')}.png`,
             shinySpriteUrl: `https://www.serebii.net/Shiny/XY/${pokedexData.pokedex_number.padStart(3, '0')}.png`
         });
-        const foo = await pokedexEntry.save();
+        await pokedexEntry.save();
 
         console.log(`Saved ${pokedexData.pokedex_number} - ${pokedexData.name}`);
     })); 

@@ -16,6 +16,7 @@ services:
     image: gcr.io/made-by-tim/pokemon-rps-server
     environment:
       - MONGODB_URL
+      - CLIENT_URL
       - JWT_SECRET
     ports:
       - '5000:5000'

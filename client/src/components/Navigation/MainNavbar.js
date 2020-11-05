@@ -1,25 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // import classes from './MainNavbar.module.css';
 
-
-class Navbar extends Component
-{
-
-
-  render() {
-
-  const links = [
-    !this.props.isLoggedIn && { label: 'Create', href: '/trainers/create' },
-    !this.props.isLoggedIn && { label: 'Login', href: '/trainers/login' },
-    this.props.isLoggedIn && { label: 'Logout', href: '/trainers/logout' },
-  ]
-  .filter(linkConfig => linkConfig)
-  .map(({ label, href }) => {
-    return (
-        <a key={href} className="nav-item nav-link" href={href}>{label}</a>
-    );
-  });
+const navbar = (props) => {
+    const links = [
+      !props.isLoggedIn && { label: 'Create', href: '/trainers/create' },
+      !props.isLoggedIn && { label: 'Login', href: '/trainers/login' },
+      props.isLoggedIn && { label: 'Logout', href: '/trainers/logout' },
+    ]
+    .filter(linkConfig => linkConfig)
+    .map(({ label, href }) => {
+      return (
+          <a key={href} className="nav-item nav-link" href={href}>{label}</a>
+      );
+    });
 
     return (
         <nav className="navbar navbar-expand navbar-dark bg-dark fixed-top">
@@ -33,7 +27,6 @@ class Navbar extends Component
             </div>
         </nav>
     );
-              }
 }
 
-export default Navbar;
+export default navbar;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from '../../../axios';
+
+import Button from '../../UI/Button/Button';
 
 import classes from './PokedexDetails.module.css';
 
@@ -77,9 +78,7 @@ class PokedexDetails extends Component {
         return (
             <div className={classes.PokedexPage}>
                 {pokedexUI}
-                <Link to="/" className={classes.PokedexListButton}>
-                    Back To Pokedex
-                </Link>
+                <Button to="/" text="Back To Pokedex" />
             </div>
         );
     }
