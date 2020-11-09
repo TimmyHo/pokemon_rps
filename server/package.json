@@ -8,6 +8,10 @@
     "dev": "env-cmd -f ../dev.env nodemon src/app.js",
     "seed-pdx": "node data/seed_pokedex_data.js",
     "seed-t": "node data/seed_trainer.js",
+    "prod-seed-pdx": "env-cmd -f ../.env node data/seed_pokedex_data.js",
+
+    "prod-seed-t": "env-cmd -f ../.env node data/seed_trainer.js",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

@@ -21,5 +21,6 @@ services:
     ports:
       - '5000:5000'
 
+  # use docker compose to build production images
   # docker-compose --env-file .env build
   # docker-compose --env-file .env up

@@ -89,8 +89,6 @@ class TrainerEdit extends Component {
     }
 
     render() {
-
-        console.log(`STATE: ${this.state.imageUrl} with male ${this.maleTrainerSprite} and female ${this.femaleTrainerSprite}`);
         return (
             <div className="container-fluid">
                 <div className="mt-3 mx-auto h2 text-center">Edit Trainer</div>

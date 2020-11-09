@@ -31,7 +31,7 @@ app.use(express.json()); // support json encoded bodies
 app.use(
     cookieSession({
       signed: false,
-      // secure: process.env.NODE_ENV !== 'test'
+      secure: process.env.NODE_ENV !== 'test'
     })
   );
 
@@ -48,7 +48,8 @@ app.get('/pokedex', currentTrainer, async (req, res) => {
         type1: 1,
         type2: 1,
         imageUrl: 1
-    });
+    })
+    .sort('pokedex_id');
     
     res.send(allPokedexData);
 });
@@ -68,7 +69,8 @@ app.get('/trainers', currentTrainer, async (req, res) => {
         populate: {
             path: 'pokedex'
         }
-    });
+    })
+    .sort('trainerTag');
     
     res.send(allTrainers);
 });
